@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e881267864944aa84f09c08b2025e79, type: 3}
+  m_Name: FurnaceBuildingSettingsDataAsset
+  m_EditorClassIdentifier: 
+  <BuildingMapObject>k__BackingField: {fileID: 1935771717215618525, guid: 979fe48f4e3c40546b159763a31dca20, type: 3}
+  <Price>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 0}
+  <TwoItemsMechanismSettingsData>k__BackingField:
+    Key: electric_furnace
+    Name: Electric Furnace
+    EnergySpentForOneItem: 1
+    BuildingEnergyPower: 10
+    Speed: 10
+    <ItemTransformationDataList>k__BackingField:
+    - InputItem: {fileID: 11400000, guid: bc29c91edf69c854d850eb691cf8ef0e, type: 2}
+      OutputItem: {fileID: 11400000, guid: bc29c91edf69c854d850eb691cf8ef0e, type: 2}

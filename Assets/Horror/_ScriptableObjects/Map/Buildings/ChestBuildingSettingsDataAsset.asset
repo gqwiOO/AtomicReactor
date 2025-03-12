@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadca8572e7c48c48812808975fb16d6, type: 3}
+  m_Name: ChestBuildingSettingsDataAsset
+  m_EditorClassIdentifier: 
+  <BuildingMapObject>k__BackingField: {fileID: 7873342081777825429, guid: 295a29d519dd73347a74eb2cc873d1c1, type: 3}
+  <ChestSettings>k__BackingField:
+    Key: wood_chest_building
+    Name: Wood Chest
+    CellCapacity: 50
+    InventoryCapacity: 50

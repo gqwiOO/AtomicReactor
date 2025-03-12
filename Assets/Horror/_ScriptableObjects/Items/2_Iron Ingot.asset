@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47af3288ed24417b9e6a66bd666aa302, type: 3}
+  m_Name: 2_Iron Ingot
+  m_EditorClassIdentifier: 
+  <ItemId>k__BackingField: 2
+  <ItemName>k__BackingField: Iron Ingot
+  <ItemMapObjectPrefab>k__BackingField: {fileID: 0}
+  <ItemSprite>k__BackingField: {fileID: 21300000, guid: cf1969e503cfaee47b0fbd6fe5a46f0a, type: 3}
+  <IsCraftable>k__BackingField: 1
+  <CraftData>k__BackingField:
+    InputAssets:
+    - {fileID: 11400000, guid: bc29c91edf69c854d850eb691cf8ef0e, type: 2}
+    OutputAssets:
+    - {fileID: 11400000}

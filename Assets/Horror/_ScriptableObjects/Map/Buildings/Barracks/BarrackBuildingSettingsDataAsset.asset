@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9aa31f4e4c4afe9cc39dadd6ee65d0, type: 3}
+  m_Name: BarrackBuildingSettingsDataAsset
+  m_EditorClassIdentifier: 
+  <BuildingMapObject>k__BackingField: {fileID: 9161625339031021686, guid: 8752686f43fee894db4a428b29ec4b3b, type: 3}
+  <Price>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 0}
+  name: Lumberjack Barrack

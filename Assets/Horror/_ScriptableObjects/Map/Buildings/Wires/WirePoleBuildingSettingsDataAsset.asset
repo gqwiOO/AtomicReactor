@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f639f4f2768440958cec658bf84f5d20, type: 3}
+  m_Name: WirePoleBuildingSettingsDataAsset
+  m_EditorClassIdentifier: 
+  <BuildingMapObject>k__BackingField: {fileID: 176128320402907697, guid: d7d35483a8c7a5542bb3c4c8de455a5a, type: 3}
+  <Price>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 0}
+  <GeneratorBuildingSettingsData>k__BackingField:
+    Key: basis_ware_building
+    Name: Wire Pole
+    Radius: 5
