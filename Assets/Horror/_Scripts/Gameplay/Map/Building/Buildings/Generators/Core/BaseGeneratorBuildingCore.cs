@@ -11,6 +11,8 @@ namespace Gameplay.Map.Building.Generators
     {
         private readonly GeneratorBuildingSettingsData _generatorBuildingSettingsData;
         public BuildingSidesData BuildingSidesData => _generatorBuildingSettingsData.BuildingSidesData;
+        
+        public float Power => _generatorBuildingSettingsData.Power;
 
         public event Action<float> OnEnergyProduced;
         public IElectricityContainer ElectricityContainer { get; private set; }

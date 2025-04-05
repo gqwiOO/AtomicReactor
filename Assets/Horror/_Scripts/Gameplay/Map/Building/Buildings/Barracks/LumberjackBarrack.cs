@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Gameplay.Inventories;
 using Gameplay.Map.Building.Items.Data;
 using Gameplay.Map.Cell;
@@ -19,7 +21,7 @@ namespace Gameplay.Units
 
         public InventoryCell InventoryCell => _singleCellInventory.InventoryCells.First();
         
-        public override void Init(Vector2Int cellPosition)
+        public override async UniTask Init(Vector2Int cellPosition)
         {
             base.Init(cellPosition);
             var unit = CreateUnit();

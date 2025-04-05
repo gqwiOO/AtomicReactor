@@ -12,7 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9cea902b37f4d5eb7e6a418f827c09a, type: 3}
   m_Name: SteamGeneratorBuildingSettingsDataAsset
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   <BuildingMapObject>k__BackingField: {fileID: 9065965807373385392, guid: d67cf17471f5f4f4cb604731a09b97e8, type: 3}
+  <Name>k__BackingField: Steam Generator
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField: []
   <Price>k__BackingField: 0
   <Icon>k__BackingField: {fileID: 0}
   <GeneratorBuildingSettingsData>k__BackingField:

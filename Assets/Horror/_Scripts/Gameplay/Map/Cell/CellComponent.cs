@@ -1,5 +1,6 @@
 ﻿using System;
 using Gameplay.Map.CellsService;
+using Gameplay.Map.Creator;
 using UnityEngine;
 using Zenject;
 
@@ -12,10 +13,17 @@ namespace Gameplay.Map.Cell
         [field: SerializeField]
         public CellSelectHandler CellSelectHandler { get; private set; }
         
+        [field: SerializeField]
         public Vector2Int Position { get; private set; }
         public Vector3 WorldPosition => transform.position;
         public ICellVisitor CellVisitor { get; private set; }
         
+        [field: SerializeField]
+        public CellType CellType { get; private set; }
+
+        [field: SerializeField]
+        public BiomeType Biome { get;  private set;}
+
         public event Action<ICell> OnUpdated;
         
         [Inject]
@@ -53,7 +61,7 @@ namespace Gameplay.Map.Cell
         private void CellVisitor_OnUpdated()
         {
             foreach (ICell cellNeighbour in _mapCellsService.GetCellNeighbours(this))
-                CellVisitor?.NotifyAboutNeighborUpdated(cellNeighbour,cellNeighbour.Position - Position);
+                cellNeighbour?.CellVisitor?.NotifyAboutNeighborUpdated(this,cellNeighbour.Position - Position);
             OnUpdated?.Invoke(this);
         }
     }

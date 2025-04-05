@@ -12,7 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f639f4f2768440958cec658bf84f5d20, type: 3}
   m_Name: WirePoleBuildingSettingsDataAsset
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   <BuildingMapObject>k__BackingField: {fileID: 176128320402907697, guid: d7d35483a8c7a5542bb3c4c8de455a5a, type: 3}
+  <Name>k__BackingField: Wire Pole
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField: []
   <Price>k__BackingField: 0
   <Icon>k__BackingField: {fileID: 0}
   <GeneratorBuildingSettingsData>k__BackingField:

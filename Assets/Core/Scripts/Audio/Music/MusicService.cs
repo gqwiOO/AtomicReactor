@@ -1,11 +1,11 @@
-﻿using DG.Tweening;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Core.Scripts.Extension.System;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Mechanics.Pools;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -36,7 +36,7 @@ namespace Audio.Music
         private List<MusicDataAsset> musicDatas = new();
         
         private MusicData _currentMusic;
-        private Tween _changeMusicTween;
+        // private Tween _changeMusicTween; 
         private CancellationTokenSource _checkMusicProgressCancellationTokenSource;
 
         private AudioSource _currentAudioSource;
@@ -54,7 +54,7 @@ namespace Audio.Music
         private void OnDisable()
         {
             StopAllCoroutines();
-            _changeMusicTween?.Kill();
+            // _changeMusicTween?.Kill();
         }
 
         private void InitializeMusicTracks()
@@ -298,8 +298,8 @@ namespace Audio.Music
                     PlayFadeInEffect(musicData).Forget();    
                 }
                 
-                _changeMusicTween?.Kill();
-                _changeMusicTween = null;
+                // _changeMusicTween?.Kill();
+                // _changeMusicTween = null;
 
                 _currentMusic = musicData;
                 _currentAudioSource = MusicSourceFadeIn;

@@ -1,6 +1,4 @@
-﻿using System;
-using GogoGaga.OptimizedRopesAndCables;
-using Unity.VisualScripting;
+﻿using GogoGaga.OptimizedRopesAndCables;
 using UnityEngine;
 
 namespace Gameplay.Map.Building.ElectricityPoles
@@ -9,7 +7,7 @@ namespace Gameplay.Map.Building.ElectricityPoles
     {
         [SerializeField] private Rope ropePrefab;
 
-        [SerializeField] private float distanceMultiplier;
+        [SerializeField] private float  distanceMultiplier;
         
         private static WireRopeFactory _instance;
 

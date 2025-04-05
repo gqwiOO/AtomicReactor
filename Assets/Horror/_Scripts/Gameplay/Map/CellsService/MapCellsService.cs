@@ -20,6 +20,8 @@ namespace Gameplay.Map.CellsService
         };
 
         public Vector2Int MapSize { get; private set; }
+        
+
         public ICell GetCell(Vector2Int cell)
         {
             _cellsDictionary.TryGetValue(cell, out ICell result);
@@ -75,7 +77,7 @@ namespace Gameplay.Map.CellsService
             visitorCell = GetClosestCellWithVisitor<TVisitor>(out TVisitor cellVisitor, targetCell);
             visitor = cellVisitor;
 
-            var closestEmptyCell = GetCellNeighbours(visitorCell.Position)
+            var closestEmptyCell = GetCellNeighboursWithPositions(visitorCell.Position)
                 .Where(neighbour => neighbour.Item1.CellVisitor == null)
                 .OrderBy(neighbour => Vector2Int.Distance(neighbour.Item2, targetCell))
                 .FirstOrDefault()?.Item1;
@@ -104,6 +106,18 @@ namespace Gameplay.Map.CellsService
             }
         }
         
+        public IEnumerable<ICell> GetCellNeighbours(Vector2Int position)
+        {
+            foreach (var positionOffset in _neighborOffsets)
+            {
+                var neighbourPosition = positionOffset + position;
+                _cellsDictionary.TryGetValue(neighbourPosition, out ICell cell);
+
+                if (cell != null)
+                    yield return cell;
+            }
+        }
+        
         public IEnumerable<Tuple<ICell, Vector2Int>> GetCellNeighboursWithVisitor<TVisitor>(Vector2Int position, int radius) where TVisitor: ICellVisitor
         {
             for (int dx = -radius; dx <= radius; dx++)
@@ -118,7 +132,7 @@ namespace Gameplay.Map.CellsService
                 }
             }
         }
-        public IEnumerable<Tuple<ICell, Vector2Int>> GetCellNeighbours(Vector2Int position)
+        public IEnumerable<Tuple<ICell, Vector2Int>> GetCellNeighboursWithPositions(Vector2Int position)
         {
             foreach (var positionOffset in _neighborOffsets)
             {
@@ -128,6 +142,37 @@ namespace Gameplay.Map.CellsService
                 if (cell != null)
                     yield return new Tuple<ICell, Vector2Int>(cell, neighbourPosition);
             }
+        }
+
+        public Dictionary<Vector2Int, ICell> GetCellNeighboursWithPositionsDictionary(Vector2Int position)
+        {
+
+            Dictionary<Vector2Int, ICell> result = new Dictionary<Vector2Int, ICell>();
+            foreach (var positionOffset in _neighborOffsets)
+            {
+                var neighbourPosition = positionOffset + position;
+                _cellsDictionary.TryGetValue(neighbourPosition, out ICell cell);
+
+                if (cell != null)
+                    result.Add(neighbourPosition,cell);
+            }
+
+            return result;
+        }
+
+        public Dictionary<ICell, CellType> GetCellsWithTypes(Vector2Int position)
+        {
+            Dictionary<ICell, CellType> result = new Dictionary<ICell, CellType>();
+            foreach (var positionOffset in _neighborOffsets)
+            {
+                var neighbourPosition = positionOffset + position;
+                _cellsDictionary.TryGetValue(neighbourPosition, out ICell cell);
+
+                if (cell != null)
+                    result.Add(cell, cell.CellType);
+            }
+
+            return result;
         }
 
         public IEnumerable<ICell> GetCellNeighbours(ICell cell)

@@ -1,4 +1,6 @@
-﻿using Gameplay.Map.Building.Electricity;
+﻿using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using Gameplay.Map.Building.Electricity;
 using Gameplay.Map.Building.Electricity.Consumer;
 using Gameplay.Map.Building.Generators.Core;
 using Gameplay.Map.Cell;
@@ -11,8 +13,9 @@ namespace Gameplay.Map.Building.Generators.Steam
         private SteamElectricityGeneratorBuildingCore _steamElectricityGeneratorBuildingCore;
 
         public override IElectricityProvider ElectricityProvider { get; protected set; }
+        public override float Power => _steamElectricityGeneratorBuildingCore.Power;
 
-        public override void Init(Vector2Int cellPosition)
+        public override async UniTask Init(Vector2Int cellPosition)
         {
             var buildingSettings = _buildingsSettingsProvider.GetBuildingSettings(Key) as GeneratorBuildingSettingsDataAsset;
             _steamElectricityGeneratorBuildingCore = new SteamElectricityGeneratorBuildingCore(buildingSettings?.GeneratorBuildingSettingsData);

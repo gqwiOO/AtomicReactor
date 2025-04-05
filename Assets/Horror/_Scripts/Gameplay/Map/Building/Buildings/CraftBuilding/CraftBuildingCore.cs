@@ -8,7 +8,6 @@ using Gameplay.Map.Building.Chest;
 using Gameplay.Map.Building.Generators;
 using Gameplay.Map.Cell;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 namespace Gameplay.Map.Building.CraftBuilding
 {

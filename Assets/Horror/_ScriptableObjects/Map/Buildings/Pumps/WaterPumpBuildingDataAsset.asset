@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fda664331740bbb171a8afa77d820f, type: 3}
+  m_Name: WaterPumpBuildingDataAsset
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  <BuildingMapObject>k__BackingField: {fileID: 20947786337616296, guid: 03f13aa7bae48cb44b3db777e7ddbe1a, type: 3}
+  <Name>k__BackingField: Water Pump
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField:
+    - <BuildingPlacementValidationType>k__BackingField: 1
+      <CellTypes>k__BackingField: 02000000
+    - <BuildingPlacementValidationType>k__BackingField: 2
+      <CellTypes>k__BackingField: 01000000
+  <Price>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 0}

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Gameplay.Map.Building.Chest;
 using Gameplay.Map.Building.Electricity;
 using Gameplay.Map.Building.Furnace;
@@ -20,7 +22,7 @@ namespace Gameplay.Map.Building
 
         public IElectricityContainer ElectricityContainer => ElectricTwoItemsMechanismBuildingCoreCore.ElectricityContainer;
 
-        public override void Init(Vector2Int cellPosition)
+        public override async UniTask Init(Vector2Int cellPosition)
         {
             var buildingSettings = _buildingsSettingsProvider.GetBuildingSettings(Key) as TwoItemsMechanismAsset;
             

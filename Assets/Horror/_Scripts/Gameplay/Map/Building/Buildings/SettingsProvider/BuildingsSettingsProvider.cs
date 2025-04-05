@@ -7,7 +7,7 @@ namespace Gameplay.Map.Building.SettingsProvider
     public class BuildingsSettingsProvider : MonoBehaviour, IBuildingsSettingsProvider
     {
         [SerializeField]
-        private BuildingsAssetCollection buildingSettingsDataAssetsCollection;
+        private BuildingSettingsDataAssetsCollection buildingSettingsDataAssetsCollection;
         
         public BuildingSettingsDataAsset GetBuildingSettings(string key)
         {

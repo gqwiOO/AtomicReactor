@@ -1,4 +1,6 @@
-﻿using Gameplay.Map.Cell;
+﻿using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using Gameplay.Map.Cell;
 using Gameplay.Map.CellsService;
 using Gameplay.Map.Wires;
 using UnityEngine;
@@ -22,7 +24,7 @@ namespace Gameplay.Map.Building.ElectricityPoles
             _mapCellsService = mapCellsService;
         }
         
-        public override void Init(Vector2Int cellPosition)
+        public override async UniTask Init(Vector2Int cellPosition)
         {
             WirePoleBuildingCore = new WirePoleBuildingCore(cellPosition, _mapCellsService,_updateService);
             WirePoleBuildingCore.Init(RopePoint);

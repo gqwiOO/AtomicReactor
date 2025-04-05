@@ -1,4 +1,6 @@
-﻿using Gameplay.Crafting;
+﻿using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using Gameplay.Crafting;
 using Gameplay.Inventories;
 using Gameplay.Map.Building.Chest;
 using Gameplay.Map.Cell;
@@ -14,7 +16,7 @@ namespace Gameplay.Map.Building.CraftBuilding
         public IItemContainer ItemOutputContainer => _craftBuildingCore.ItemOutputContainer;
         public IInventory ItemsInputInventory => _craftBuildingCore.InputInventory;
 
-        public override void Init(Vector2Int cellPosition)
+        public override async UniTask Init(Vector2Int cellPosition)
         {
             _craftBuildingCore = new CraftBuildingCore();
             base.Init(cellPosition);

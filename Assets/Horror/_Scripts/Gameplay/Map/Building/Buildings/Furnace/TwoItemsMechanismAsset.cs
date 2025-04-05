@@ -7,7 +7,5 @@ namespace Gameplay.Map.Building.Furnace
     {
         [field: SerializeField] public TwoItemsMechanismSettingsData TwoItemsMechanismSettingsData { get; private set; }
 
-        public override string Key => TwoItemsMechanismSettingsData.Key;
-        public override string Name => TwoItemsMechanismSettingsData.Name;
     }
 }

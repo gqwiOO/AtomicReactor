@@ -1,4 +1,6 @@
-﻿using Gameplay.Map.Cell;
+﻿using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using Gameplay.Map.Cell;
 using UnityEngine;
 
 namespace Gameplay.Map.Building.Chest
@@ -7,7 +9,7 @@ namespace Gameplay.Map.Building.Chest
     {
         public InventoryBuildingCore InventoryBuildingCore { get; private set; }
         
-        public override void Init(Vector2Int cellPosition)
+        public override async UniTask Init(Vector2Int cellPosition)
         {
             InventoryBuildingCore = new();
             base.Init(cellPosition);

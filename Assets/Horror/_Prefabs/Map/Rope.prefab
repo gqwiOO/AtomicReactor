@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3136556757608022640}
   - component: {fileID: 3765625674836915141}
-  - component: {fileID: 3523547168063578965}
+  - component: {fileID: 6414210039258041236}
   m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
@@ -87,7 +87,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.05
+        value: 0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -96,7 +96,7 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.05
+        value: 0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -147,7 +147,7 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &3523547168063578965
+--- !u!114 &6414210039258041236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1298087485758778424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2fcc597881599646a35e7161a5504ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a882b7d8bb29eb41993cf2dfb132001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startPoint: {fileID: 0}
@@ -166,6 +166,6 @@ MonoBehaviour:
   stiffness: 350
   damping: 15
   ropeLength: 15
-  ropeWidth: 0.05
+  ropeWidth: 0.1
   midPointWeight: 1
   midPointPosition: 0.5

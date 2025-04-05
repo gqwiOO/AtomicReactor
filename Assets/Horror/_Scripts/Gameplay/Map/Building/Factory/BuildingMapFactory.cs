@@ -19,6 +19,7 @@ namespace Gameplay.Map.Building.Factory
         public T CreateBuilding<T>(string key) where T : BuildingMapObject
         {
             T result = _diContainer.InstantiatePrefabForComponent<T>(_buildingsAssetCollection.GetByKey(key).BuildingMapObject);
+            result.SetMaterial(Material.Instantiate(result.BaseMaterial));
             return result;
         }
     }

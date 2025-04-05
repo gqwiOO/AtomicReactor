@@ -7,7 +7,5 @@ namespace Gameplay.Map.Building.CraftBuilding.Data
     public class CraftBuildingSettingsDataAsset : BuildingSettingsDataAsset
     {
         [field: SerializeField] public CraftBuildingData CraftBuildingData { get; private set; }
-        [field: SerializeField] public override string Key => CraftBuildingData.Key;
-        [field: SerializeField] public override string Name => CraftBuildingData.Name;
     }
 }

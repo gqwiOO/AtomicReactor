@@ -369,8 +369,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1625267339646785509}
   - component: {fileID: 2811508339971378600}
-  - component: {fileID: 7121744274825433087}
   - component: {fileID: 803901513028971351}
+  - component: {fileID: 2873033535364894217}
+  - component: {fileID: 8863707527380315529}
   m_Layer: 0
   m_Name: WindGenerator
   m_TagString: Untagged
@@ -419,20 +420,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7121744274825433087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3082752332495095004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c318426dc8e46e9b4a7720306805076, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerCollider: {fileID: 803901513028971351}
-  <Key>k__BackingField: wind_generator_building
 --- !u!65 &803901513028971351
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -454,6 +441,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.55, y: 1.32, z: 0.55}
   m_Center: {x: 0, y: 0.29, z: 0}
+--- !u!114 &2873033535364894217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082752332495095004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf0e9d9d0004a4e82abaf53977fddfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8863707527380315529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082752332495095004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6e7d11c4064c0a92e4b92936c0fdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCollider: {fileID: 803901513028971351}
+  meshRenderer:
+  - {fileID: 3920675768528881961}
+  - {fileID: 2137922820312219012}
+  - {fileID: 1499975529246840541}
+  <BaseMaterial>k__BackingField: {fileID: 2100000, guid: d6316c8bb7573d64cb20875c547ee48e, type: 2}
+  <Key>k__BackingField: wind_generator_building
 --- !u!1 &4851198120430397967
 GameObject:
   m_ObjectHideFlags: 0

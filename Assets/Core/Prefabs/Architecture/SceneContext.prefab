@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8a305c7a044d8986276cd0772f9d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellDiffVisitorPosition: {x: 0, y: 0.1, z: 0}
+  cellDiffVisitorPosition: {x: 0, y: 0.52, z: 0}
 --- !u!1 &1414487375959272174
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +371,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3024200179981811380}
-  - {fileID: 5782022182199321144}
   m_Father: {fileID: 1384249500751624564}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1165845378341403064
@@ -386,7 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8b99e1cc4e4a24a5a15b542b3a0a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUIProvider: {fileID: 3728275292829669612}
+  mapUIProvider: {fileID: 0}
   mapUIHandler: {fileID: 4504795572567649752}
 --- !u!1 &2400855854327186602
 GameObject:
@@ -1120,58 +1119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingsSettingsProvider: {fileID: 6769492011597741832}
---- !u!1 &6432544931828146506
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5782022182199321144}
-  - component: {fileID: 3728275292829669612}
-  m_Layer: 0
-  m_Name: MapUIProvider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5782022182199321144
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6432544931828146506}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5485192741413941192}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3728275292829669612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6432544931828146506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8026ed9dd4464c60b7dc0f2d9012c7e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  electricFurnaceView: {fileID: 0}
-  _mapObjectsViews:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &6681478922706958855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,7 +1307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b1304927374d449306ce8d567f4601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingSettingsDataAssetsCollection: {fileID: 11400000, guid: abcdec5d3456d734991e40d05c8667fc, type: 2}
+  buildingSettingsDataAssetsCollection: {fileID: 11400000, guid: 6640d812a48fc324891c6373ad87b450, type: 2}
 --- !u!1 &8224445051114284497
 GameObject:
   m_ObjectHideFlags: 0

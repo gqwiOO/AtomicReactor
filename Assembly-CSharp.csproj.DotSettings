@@ -10,6 +10,7 @@
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Chorror_005C_005Fscripts_005Cgameplay_005Cmapui/@EntryIndexedValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Chorror_005C_005Fscripts_005Cgameplay_005Cmap_005Cbuilding_005Casset/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Chorror_005C_005Fscripts_005Cgameplay_005Cmap_005Cbuilding_005Cbuildings/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Chorror_005C_005Fscripts_005Cgameplay_005Cmap_005Cbuilding_005Cbuildingspawn/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Chorror_005C_005Fscripts_005Cgameplay_005Cmap_005Cbuilding_005Cbuildings_005Csides/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Chorror_005C_005Fscripts_005Cgameplay_005Cmap_005Cbuilding_005Cbuildings_005Csidesdata/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Chorror_005C_005Fscripts_005Cgameplay_005Cmap_005Cbuilding_005Celectricity_005Ccontainer/@EntryIndexedValue">True</s:Boolean>

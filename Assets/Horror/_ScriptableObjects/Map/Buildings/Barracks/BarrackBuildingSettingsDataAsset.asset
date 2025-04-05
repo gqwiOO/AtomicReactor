@@ -12,7 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9aa31f4e4c4afe9cc39dadd6ee65d0, type: 3}
   m_Name: BarrackBuildingSettingsDataAsset
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   <BuildingMapObject>k__BackingField: {fileID: 9161625339031021686, guid: 8752686f43fee894db4a428b29ec4b3b, type: 3}
+  <Name>k__BackingField: Lumberjack Barrack
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField: []
   <Price>k__BackingField: 0
   <Icon>k__BackingField: {fileID: 0}
-  name: Lumberjack Barrack

@@ -12,8 +12,11 @@ namespace Gameplay.Map.CellsService
         
         IEnumerable<Tuple<ICell, Vector2Int>> GetCellNeighbours(Vector2Int position, int radius);
         IEnumerable<Tuple<ICell, Vector2Int>> GetCellNeighboursWithVisitor<TVisitor>(Vector2Int position, int radius) where TVisitor: ICellVisitor;
-        IEnumerable<Tuple<ICell, Vector2Int>> GetCellNeighbours(Vector2Int position);
+        IEnumerable<Tuple<ICell, Vector2Int>> GetCellNeighboursWithPositions(Vector2Int position);
+        Dictionary<Vector2Int,ICell> GetCellNeighboursWithPositionsDictionary(Vector2Int position);
+        Dictionary<ICell,CellType> GetCellsWithTypes(Vector2Int position);
         IEnumerable<ICell> GetCellNeighbours(ICell cell);
+        IEnumerable<ICell> GetCellNeighbours(Vector2Int position);
         ICell GetCell(Vector2Int cell);
         void InitCells(Dictionary<Vector2Int, ICell> cells, Vector2Int mapSize);
 

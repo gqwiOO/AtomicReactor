@@ -1,4 +1,6 @@
-﻿using Gameplay.Map.Building.Electricity;
+﻿using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using Gameplay.Map.Building.Electricity;
 using Gameplay.Map.Building.Electricity.Consumer;
 using Gameplay.Map.Cell;
 using UnityEngine;
@@ -8,10 +10,14 @@ namespace Gameplay.Map.Building.Generators
     public class WindGeneratorMapObject : BaseElectricityGeneratorMapObject
     {
         private WindGeneratorBuildingCore _windGeneratorBuildingCore;
-        public override void Init(Vector2Int cellPosition)
+        private GeneratorBuildingSettingsDataAsset _buildingSettings;
+
+        public override IElectricityProvider ElectricityProvider { get; protected set; }
+        public override float Power => _windGeneratorBuildingCore.Power;
+        public override async UniTask Init(Vector2Int cellPosition)
         {
-            var buildingSettings = _buildingsSettingsProvider.GetBuildingSettings(Key) as GeneratorBuildingSettingsDataAsset;
-            _windGeneratorBuildingCore = new WindGeneratorBuildingCore(buildingSettings?.GeneratorBuildingSettingsData);
+            _buildingSettings = _buildingsSettingsProvider.GetBuildingSettings(Key) as GeneratorBuildingSettingsDataAsset;
+            _windGeneratorBuildingCore = new WindGeneratorBuildingCore(_buildingSettings?.GeneratorBuildingSettingsData);
             
             ElectricityProvider = new ElectricityProvider();
             ElectricityProvider.SetContainer(_windGeneratorBuildingCore.ElectricityContainer);
@@ -31,6 +37,6 @@ namespace Gameplay.Map.Building.Generators
             
         }
 
-        public override IElectricityProvider ElectricityProvider { get; protected set; }
+        
     }
 }

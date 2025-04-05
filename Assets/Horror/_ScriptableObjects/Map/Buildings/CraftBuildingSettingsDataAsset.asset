@@ -12,7 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1c6fb79ab540018dfa1bb9c3f66a9e, type: 3}
   m_Name: CraftBuildingSettingsDataAsset
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   <BuildingMapObject>k__BackingField: {fileID: 6674748703724337419, guid: 44082fa5a4ab9b54eae1e7dc75d6cc22, type: 3}
+  <Name>k__BackingField: Crafting Machine
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField: []
   <Price>k__BackingField: 0
   <Icon>k__BackingField: {fileID: 0}
   <CraftBuildingData>k__BackingField:

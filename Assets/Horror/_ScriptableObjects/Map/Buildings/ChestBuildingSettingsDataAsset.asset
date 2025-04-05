@@ -12,7 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fadca8572e7c48c48812808975fb16d6, type: 3}
   m_Name: ChestBuildingSettingsDataAsset
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   <BuildingMapObject>k__BackingField: {fileID: 7873342081777825429, guid: 295a29d519dd73347a74eb2cc873d1c1, type: 3}
+  <Name>k__BackingField: Chest
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField: []
+  <Price>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 0}
   <ChestSettings>k__BackingField:
     Key: wood_chest_building
     Name: Wood Chest

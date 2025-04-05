@@ -19,6 +19,14 @@ namespace Core.Scripts.Debugging
                 Debug.Log(sendMessage);
             }
         }
+        public static void Error<T>(T obj, string message)
+        {
+            if(CanSend())
+            {
+                string sendMessage = $"[{nameof(T)}] {message}.";
+                Debug.LogError(sendMessage);
+            }
+        }
 
         private static bool CanSend() 
             => _settings.IsEnabled;

@@ -12,7 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e881267864944aa84f09c08b2025e79, type: 3}
   m_Name: FurnaceBuildingSettingsDataAsset
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   <BuildingMapObject>k__BackingField: {fileID: 1935771717215618525, guid: 979fe48f4e3c40546b159763a31dca20, type: 3}
+  <Name>k__BackingField: Furnace
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField: []
   <Price>k__BackingField: 0
   <Icon>k__BackingField: {fileID: 0}
   <TwoItemsMechanismSettingsData>k__BackingField:

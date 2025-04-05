@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc30a8b748524456ba401ebf48aaad8a, type: 3}
+  m_Name: FluidTankDataAsset
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  <BuildingMapObject>k__BackingField: {fileID: 8202756810020027224, guid: 972abfeeb049586419c7c7361a39b9ab, type: 3}
+  <Name>k__BackingField: Fluid Tank
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField:
+    - <BuildingPlacementValidationType>k__BackingField: 2
+      <CellTypes>k__BackingField: 01000000
+    <MultiplyPlacing>k__BackingField: 0
+  <Price>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 0}
+  <MaxCapacity>k__BackingField: 500

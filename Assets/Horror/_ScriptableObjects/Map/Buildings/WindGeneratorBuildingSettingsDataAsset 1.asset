@@ -12,7 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9cea902b37f4d5eb7e6a418f827c09a, type: 3}
   m_Name: WindGeneratorBuildingSettingsDataAsset 1
   m_EditorClassIdentifier: 
-  <BuildingMapObject>k__BackingField: {fileID: 7121744274825433087, guid: f4c98743ba0ea3d46b7f4a8cc760288d, type: 3}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  <BuildingMapObject>k__BackingField: {fileID: 8863707527380315529, guid: f4c98743ba0ea3d46b7f4a8cc760288d, type: 3}
+  <Name>k__BackingField: Wind Generator
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField:
+    - <BuildingPlacementValidationType>k__BackingField: 2
+      <CellTypes>k__BackingField: 01000000
+  <Price>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 0}
   <GeneratorBuildingSettingsData>k__BackingField:
     Key: wind_generator_building
     Name: Wind Generator

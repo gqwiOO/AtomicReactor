@@ -1,4 +1,5 @@
 ﻿using System;
+using Gameplay.Map.Creator;
 using UnityEngine;
 
 namespace Gameplay.Map.Cell
@@ -10,6 +11,8 @@ namespace Gameplay.Map.Cell
         Vector3 WorldPosition { get; }
 
         ICellVisitor CellVisitor { get; }
+        CellType CellType { get; }
+        BiomeType Biome { get; }
 
         event Action<ICell> OnUpdated;
 

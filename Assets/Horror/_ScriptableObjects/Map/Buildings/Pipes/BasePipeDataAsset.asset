@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4769820faa049f89655170070df6f16, type: 3}
+  m_Name: BasePipeDataAsset
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  <BuildingMapObject>k__BackingField: {fileID: 1264714126302463394, guid: 84c89215f9d09eb4e8ebc44b19277216, type: 3}
+  <Name>k__BackingField: Fluid Pipe
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField:
+    - <BuildingPlacementValidationType>k__BackingField: 2
+      <CellTypes>k__BackingField: 01000000
+    <MultiplyPlacing>k__BackingField: 1
+  <Price>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 0}
+  <PipeCapacity>k__BackingField: 0

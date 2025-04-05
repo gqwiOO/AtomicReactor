@@ -1,6 +1,7 @@
 ﻿using Gameplay.Map.Building;
 using Gameplay.Map.Building.Factory;
 using Gameplay.Map.Building.Placer;
+using Gameplay.Map.Building.Validator;
 using Gameplay.Map.CellsService;
 using UnityEngine;
 using Zenject;
@@ -19,6 +20,7 @@ namespace Gameplay.Map.Installer
             Container.Bind<IBuildingMapCellSelectorHandler>().FromInstance(buildingMapCellSelectorHandler).AsSingle();
             Container.Bind<IBuildingMapFactory>().FromInstance(buildingMapFactory).AsSingle();
             Container.BindInterfacesAndSelfTo<MapCellsService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<BuildingCellPlacementValidator>().AsSingle();
         }
     }
 }
