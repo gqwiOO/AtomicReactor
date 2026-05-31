@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd1291dd68a8a3a41a014bcc332c6e87, type: 3}
+  m_Name: BiomesCollection
+  m_EditorClassIdentifier: GameAssembly::GameAssembly.Horror._Scripts.Gameplay.Map.Biomes.BiomesCollection
+  SiteDensityDivisor: 1500
+  RelaxPasses: 5
+  EdgeNoiseScale: 20
+  EdgeNoiseFrequency: 0.124
+  Biomes:
+  - {fileID: 11400000, guid: d91d7f31eb001104986ac74de4c02c9b, type: 2}
+  - {fileID: 11400000, guid: 40e434a42826fe1408cf14f191aaaf05, type: 2}
+  - {fileID: 11400000, guid: 7c9a1a54fa9c8584a9b7a0bd0ab90b7b, type: 2}
+  - {fileID: 11400000, guid: 071ad38217faf924b940397f36a8a08f, type: 2}

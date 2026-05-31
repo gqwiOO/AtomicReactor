@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 246954c7c24417744b8a3aab7444a147, type: 3}
+  m_Name: RockyPlainBiomeConfig
+  m_EditorClassIdentifier: GameAssembly::GameAssembly.Horror._Scripts.Gameplay.Map.Biomes.BiomeConfig
+  BiomeType: 4
+  SpawnWeight: 1
+  GroundCellType: 3
+  OreConfigs:
+  - {fileID: 11400000, guid: 80c794574e801ad4691ada02d20e2860, type: 2}
+  - {fileID: 11400000, guid: 3b871d97714acfe4ea6dfa9a90523229, type: 2}
+  - {fileID: 11400000, guid: fcff42c16a6c2694b83f3a28cfb8ed37, type: 2}
+  CanSpawnTrees: 0
+  TreeNoiseFrequency: 0.05
+  TreeNoiseThreshold: 0
