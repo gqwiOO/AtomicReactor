@@ -1,6 +1,7 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using Gameplay.Map.Building;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +9,8 @@ namespace Gameplay.MapUI.Views
 {
     public abstract class BaseMapObjectView: MonoBehaviour, IMapUIObjectView
     {
-        [field: SerializeField] 
-        public string Key { get; private set;}
+        [field: SerializeField]
+        public List<string> Keys { get; private set;}
 
         [SerializeField] private bool hasCloseButton;
         
@@ -40,6 +41,22 @@ namespace Gameplay.MapUI.Views
         public void Hide()
         {
             gameObject.SetActive(false);
+        }
+    }
+
+    public class WirePoleView : BaseMapObjectView
+    {
+        [SerializeField] private TMP_Text inputPowerText;
+        [SerializeField] private TMP_Text outputPowerText;
+        
+        public override void Init(BuildingMapObject buildingMapObject)
+        {
+            
+        }
+
+        private void SpecifiInit()
+        {
+            
         }
     }
 

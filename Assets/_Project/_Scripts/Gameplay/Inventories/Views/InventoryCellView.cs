@@ -36,24 +36,11 @@ namespace Gameplay.Inventories.Views
 
         public void UpdateView()
         {
-            if (_cell.Amount == 0)
-            {
-                _countText.gameObject.SetActive(false);
-            }
-            else
-            {
-                _countText.gameObject.SetActive(true);
-            }
-
             var itemSprite = _itemsDataProvider.GetItemSprite(_cell.ItemId);
             if (itemSprite)
             {
                 _itemIcon.sprite = itemSprite;
-                _itemIcon.gameObject.SetActive(true);
             }
-            else
-                _itemIcon.gameObject.SetActive(false);
-            
             _countText.text = _cell.Amount.ToString();
         }
     }

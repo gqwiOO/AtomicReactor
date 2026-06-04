@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcdec8e4679658241808f0ad529438f4, type: 3}
+  m_Name: WoodFuel
+  m_EditorClassIdentifier: GameAssembly::Gameplay.Fuel.FuelDataAsset
+  <FuelName>k__BackingField: Wood
+  <SourceType>k__BackingField: 0
+  <EnergyInJoules>k__BackingField: 50
+  <ItemAsset>k__BackingField: {fileID: 11400000, guid: 6499a8301a9d76f45ae647f2abf68420, type: 2}
+  <FluidType>k__BackingField: 0

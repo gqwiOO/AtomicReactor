@@ -8,8 +8,9 @@ namespace Gameplay.UI.Services
     {
         public async Task ShowSelectBuildingScreen()
         {
-            var screen = GetScreen<SelectBuildingScreen>();
+            SelectBuildingScreen screen = GetScreen<SelectBuildingScreen>();
             await screen.Open();
+            screen.Init();
         }
     }
 }

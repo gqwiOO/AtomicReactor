@@ -19,11 +19,15 @@ namespace Gameplay.UI.Tabs
 
         private TabEntry _currentTab;
 
-        private void Start()
+        private void Awake()
         {
             foreach (var tab in _tabs)
                 tab.Button.OnClicked += Button_OnClicked;
+        }
 
+        private void OnEnable()
+        {
+            _currentTab = null;
             if (_tabs.Count > 0)
                 SelectTab(_tabs[Mathf.Clamp(_defaultTabIndex, 0, _tabs.Count - 1)]);
         }

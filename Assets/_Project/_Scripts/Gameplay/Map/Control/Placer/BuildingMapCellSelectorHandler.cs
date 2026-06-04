@@ -54,6 +54,12 @@ namespace Gameplay.Map.Building.Placer
 
         private void BuildingMapSpawnSelectorOnOnBuildingChanged(BuildingSettingsDataAsset buildingSettingsData)
         {
+            SetCurrentBuilding(buildingSettingsData);
+        }
+
+        private async UniTask SetCurrentBuilding(BuildingSettingsDataAsset buildingSettingsData)
+        {
+            await UniTask.WaitForSeconds(0.1f, true);
             _currentBuildingSettingsData = buildingSettingsData;
             TurnOn(_currentBuildingSettingsData.Key);
         }
@@ -101,12 +107,22 @@ namespace Gameplay.Map.Building.Placer
             Debugging.Log(this, "Can be placed: " + _canBePlaced);
 
             _instance.SetMaterialColor(_canBePlaced ? Color.green : Color.red);
-            _instance.transform.position = _cellMapListener.CurrentCell.transform.position + cellDiffVisitorPosition;
         }
 
         private void Update()
         {
             if (!_isEnabled) return;
+
+            if (_cellMapListener.CurrentCell != null)
+                _instance.transform.position = _cellMapListener.CurrentCell.transform.position + cellDiffVisitorPosition;
+
+            if (_ignoringCurrentPress)
+            {
+                if (!Input.GetMouseButton(0))
+                    _ignoringCurrentPress = false;
+                return;
+            }
+
             if (Input.GetMouseButton(0) && _canBePlaced)
                 PlaceBuilding().Forget();
         }

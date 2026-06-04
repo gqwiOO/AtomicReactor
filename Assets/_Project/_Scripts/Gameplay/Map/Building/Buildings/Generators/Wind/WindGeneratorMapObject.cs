@@ -10,19 +10,17 @@ namespace Gameplay.Map.Building.Generators
     public class WindGeneratorMapObject : BaseElectricityGeneratorMapObject
     {
         private WindGeneratorBuildingCore _windGeneratorBuildingCore;
-        private GeneratorBuildingSettingsDataAsset _buildingSettings;
+        private WindGeneratorBuildingSettingsDataAsset _buildingSettings;
 
         public override IElectricityProvider ElectricityProvider { get; protected set; }
         public override float Power => _windGeneratorBuildingCore.Power;
         public override async UniTask Init(Vector2Int cellPosition)
         {
-            _buildingSettings = _buildingsSettingsProvider.GetBuildingSettings(Key) as GeneratorBuildingSettingsDataAsset;
+            _buildingSettings = _buildingsSettingsProvider.GetBuildingSettings(Key) as WindGeneratorBuildingSettingsDataAsset;
             _windGeneratorBuildingCore = new WindGeneratorBuildingCore(_buildingSettings?.GeneratorBuildingSettingsData);
             
             ElectricityProvider = new ElectricityProvider();
             ElectricityProvider.SetContainer(_windGeneratorBuildingCore.ElectricityContainer);
-            
-            base.Init(cellPosition);
             
             base.Init(cellPosition);
         }

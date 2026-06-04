@@ -24,15 +24,22 @@ namespace Gameplay.Control
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 CellComponent cell = hit.collider.GetComponentInParent<CellComponent>();
-                if (cell != null && cell != _previousSelectedCell)
+                if (cell != null)
                 {
-                    CurrentCell = cell;
-                    OnCellPointed?.Invoke(cell);
-                    if (cell.CellVisitor == null)
-                        cell.CellSelectHandler.SelectCell();
-                    if (_previousSelectedCell != null)
-                        _previousSelectedCell.CellSelectHandler.UnselectCell();
-                    _previousSelectedCell = cell;
+                    Debug.Log($"[CellsRaycaster] Selected Cell - \n" +
+                              $"Position = {cell.Position.x}, {cell.Position.y} \n" + 
+                              $"WorldPosition = {cell.WorldPosition.x}, {cell.WorldPosition.z} \n" + 
+                              $"Type = {cell.CellType}");
+                    if (cell != _previousSelectedCell)
+                    {
+                        CurrentCell = cell;
+                        OnCellPointed?.Invoke(cell);
+                        if (cell.CellVisitor == null)
+                            cell.CellSelectHandler.SelectCell();
+                        if (_previousSelectedCell != null)
+                            _previousSelectedCell.CellSelectHandler.UnselectCell();
+                        _previousSelectedCell = cell;
+                    }
                 }
             }
         }

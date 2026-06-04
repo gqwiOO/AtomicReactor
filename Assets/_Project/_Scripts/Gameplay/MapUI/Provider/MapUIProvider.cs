@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Gameplay.Map.Building;
 using Gameplay.Map.Building.View;
 using Gameplay.MapUI.Views;
@@ -22,7 +20,10 @@ namespace Gameplay.MapUI
 
         private void Awake()
         {
-            _mapObjectViewsDictionary = _mapObjectsViews.ToDictionary(view => view.Key);
+            _mapObjectViewsDictionary = new Dictionary<string, BaseMapObjectView>();
+            foreach (var view in _mapObjectsViews)
+                foreach (var key in view.Keys)
+                    _mapObjectViewsDictionary[key] = view;
         }
 
         public ElectricFurnaceView GetElectricFurnaceView() => electricFurnaceView;

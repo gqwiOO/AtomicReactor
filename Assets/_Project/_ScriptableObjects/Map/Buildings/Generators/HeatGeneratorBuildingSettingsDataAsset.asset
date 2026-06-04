@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302bb1ea1ff063147a7fb410c4eee542, type: 3}
+  m_Name: HeatGeneratorBuildingSettingsDataAsset
+  m_EditorClassIdentifier: GameAssembly::Gameplay.Map.Building.HeatGeneratorBuildingSettingsDataAsset
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  <BuildingMapObject>k__BackingField: {fileID: 7054144717990151523, guid: 547b4dbd24d33b449b168674f5b22e86, type: 3}
+  <Name>k__BackingField: Heat Generator
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField: []
+    <MultiplyPlacing>k__BackingField: 0
+  <Price>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 0}
+  <BuildingCost>k__BackingField: []
+  <GeneratorBuildingSettingsData>k__BackingField:
+    Key: heat_generator
+    Name: Heat Generator
+    Efficiency: 0.8
+    Power: 100
+    Ah_BatteryCapacity: 50000
+    BuildingSidesData:
+      AllowedTypes: 
+    AcceptedFuels:
+    - {fileID: 11400000, guid: a890f541efbc0074faf02863d81a0696, type: 2}
+    ItemFuelSlots: 1
+    FluidFuelTankCapacity: 100

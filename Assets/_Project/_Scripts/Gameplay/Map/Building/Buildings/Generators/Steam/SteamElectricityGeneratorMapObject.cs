@@ -17,8 +17,11 @@ namespace Gameplay.Map.Building.Generators.Steam
 
         public override async UniTask Init(Vector2Int cellPosition)
         {
-            var buildingSettings = _buildingsSettingsProvider.GetBuildingSettings(Key) as GeneratorBuildingSettingsDataAsset;
-            _steamElectricityGeneratorBuildingCore = new SteamElectricityGeneratorBuildingCore(buildingSettings?.GeneratorBuildingSettingsData);
+            SteamGeneratorBuildingSettingsDataAsset buildingSettings = 
+                _buildingsSettingsProvider.GetBuildingSettings(Key) as SteamGeneratorBuildingSettingsDataAsset;
+            
+            _steamElectricityGeneratorBuildingCore =
+                new SteamElectricityGeneratorBuildingCore(buildingSettings?.SteamGeneratorSettingsData);
             
             ElectricityProvider = new ElectricityProvider();
             ElectricityProvider.SetContainer(_steamElectricityGeneratorBuildingCore.ElectricityContainer);

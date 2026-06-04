@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd64e3c311064fec86ff5252069aa66e, type: 3}
+  m_Name: SteamGeneratorBuildingSettingsDataAsset
+  m_EditorClassIdentifier: GameAssembly::Gameplay.Map.Building.SteamGeneratorBuildingSettingsDataAsset
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  <BuildingMapObject>k__BackingField: {fileID: 9065965807373385392, guid: d67cf17471f5f4f4cb604731a09b97e8, type: 3}
+  <Name>k__BackingField: Steam Generator
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField: []
+    <MultiplyPlacing>k__BackingField: 0
+  <Price>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 0}
+  <BuildingCost>k__BackingField: []
+  <GeneratorBuildingSettingsData>k__BackingField:
+    Key: 
+    Name: 
+    Efficiency: 0.8
+    Power: 0
+    Ah_BatteryCapacity: 0
+    BuildingSidesData:
+      AllowedTypes: 

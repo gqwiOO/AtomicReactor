@@ -1,7 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Gameplay.Inventories;
 using Gameplay.Map.Building.Items.Data;
@@ -12,15 +8,19 @@ namespace Gameplay.Units
 {
     public class LumberjackBarrack : BaseBarrack
     {
-        [SerializeField] 
+        [SerializeField]
         private ItemDataAsset miningResourceItem;
-        
-        private SingleCellInventory _singleCellInventory = new ();
 
-        private HashSet<IBarackUnit> _units = new();
+        private SingleCellInventory _singleCellInventory = new();
 
-        public InventoryCell InventoryCell => _singleCellInventory.InventoryCells.First();
-        
+        private float _lastReturnTime = -1f;
+        private float _lastCycleDuration;
+
+        protected override IInventory Storage => _singleCellInventory;
+        public override int MinedItemId => miningResourceItem != null ? miningResourceItem.ItemId : -1;
+        public override float MiningRatePerSecond =>
+            _lastCycleDuration > 0f ? 5f / _lastCycleDuration : 0f;
+
         public override async UniTask Init(Vector2Int cellPosition)
         {
             base.Init(cellPosition);
@@ -29,18 +29,18 @@ namespace Gameplay.Units
             unit.StartWorking();
         }
 
-        public override void Tick()
-        {
-            
-        }
+        public override void Tick() { }
 
-        public override void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int direction)
-        {
-        }
+        public override void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int direction) { }
 
         protected override void Unit_OnReturnedToBarrack()
         {
-            _singleCellInventory.Add(miningResourceItem.ItemId,5);
+            float now = Time.time;
+            if (_lastReturnTime >= 0f)
+                _lastCycleDuration = now - _lastReturnTime;
+            _lastReturnTime = now;
+
+            _singleCellInventory.Add(miningResourceItem.ItemId, 5);
         }
     }
 }

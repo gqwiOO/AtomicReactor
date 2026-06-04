@@ -39,7 +39,7 @@ namespace Gameplay.Buildings.View
                 {
                     buildingViews.TryGetValue(dataAsset.Key, out BaseBuildingView buildingView);
                     buildingView.Init(dataAsset);
-                    buildingView.InteractableItem.OnClicked += OnBuildingToBuildSelected;
+                    buildingView.InteractableItem.OnClicked += BuildingView_OnClicked;
                 }
                 else
                 {
@@ -48,9 +48,14 @@ namespace Gameplay.Buildings.View
                     buildingView.Init(dataAsset);
                     buildingView.Show();
                     buildingViews.Add(dataAsset.Key, buildingView);
-                    buildingView.InteractableItem.OnClicked += OnBuildingToBuildSelected;
+                    buildingView.InteractableItem.OnClicked += BuildingView_OnClicked;
                 }
             }
+        }
+
+        private void BuildingView_OnClicked(string buildingKey)
+        {
+            OnBuildingToBuildSelected?.Invoke(buildingKey);
         }
 
         private BaseBuildingView GetBuildingView()

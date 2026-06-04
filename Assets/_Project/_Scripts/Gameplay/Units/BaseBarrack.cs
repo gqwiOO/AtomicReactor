@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Gameplay.Units
 {
-    public abstract class BaseBarrack: BuildingMapObject
+    public abstract class BaseBarrack: BaseItemMinerMapObject
     {
         [FormerlySerializedAs("_unit")] [SerializeField]
         protected BaseBarrackBarackUnit barackUnit;

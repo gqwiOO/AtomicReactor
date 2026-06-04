@@ -13,15 +13,21 @@ namespace Gameplay.Buildings.Screens
         [SerializeField] private List<BuildingsCollectionView> buildingsCollectionView;
         
         private IBuildingMapSpawnSelector _buildingMapSpawnSelector;
-        
+        private bool _inited;
+
         [Inject]
         private void Construct(IBuildingMapSpawnSelector buildingMapSpawnSelector)
         {
             _buildingMapSpawnSelector = buildingMapSpawnSelector;
         }
-        private void Start()
+        
+        public void Init()
         {
-            buildingsCollectionView.ForEach(collectionView => collectionView.OnBuildingToBuildSelected += SelectBuildingView_OnBuildingSelected);
+            if (!_inited)
+            {
+                buildingsCollectionView.ForEach(collectionView => collectionView.OnBuildingToBuildSelected += SelectBuildingView_OnBuildingSelected);
+                _inited = true;
+            }
         }
 
         protected override void OnDestroy()

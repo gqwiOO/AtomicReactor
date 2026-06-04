@@ -21,7 +21,7 @@ namespace Gameplay.UI.Tabs
 
         public bool IsSelected { get; private set; }
 
-        private void Start()
+        private void Awake()
         {
             _button.onClick.AddListener(Button_OnClicked);
         }

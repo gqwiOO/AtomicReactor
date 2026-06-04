@@ -4,9 +4,9 @@ using UnityEngine;
 namespace Gameplay.Map.Building
 {
     [CreateAssetMenu(menuName = "Core/Buildings/GeneratorBuildingSettingsDataAsset", fileName = "GeneratorBuildingSettingsDataAsset")]
-    public class GeneratorBuildingSettingsDataAsset : BuildingSettingsDataAsset
+    public class BaseGeneratorBuildingSettingsDataAsset<TGeneratorSettings> : BuildingSettingsDataAsset where TGeneratorSettings : GeneratorBuildingSettingsData
     {
         [field: SerializeField] 
-        public GeneratorBuildingSettingsData GeneratorBuildingSettingsData { get; private set; }
+        public TGeneratorSettings GeneratorBuildingSettingsData { get; private set; }
     }
 }

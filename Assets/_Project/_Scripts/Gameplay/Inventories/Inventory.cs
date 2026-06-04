@@ -73,9 +73,6 @@ namespace Gameplay.Inventories
                     int toRemove = Math.Min(amount, Cells[i].Amount);
                     Cells[i].Remove(toRemove);
                     amount -= toRemove;
-                    if (Cells[i].Amount == 0)
-                        Cells.RemoveAt(i);
-                    
                     OnChanged?.Invoke();
                     return toRemove;
                 }

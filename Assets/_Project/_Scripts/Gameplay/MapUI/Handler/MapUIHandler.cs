@@ -19,17 +19,27 @@ namespace Gameplay.MapUI
             _mapUIProvider = mapUIProvider;
         }
         
-        public void ShowMapBuildingView(BuildingMapObject electricFurnaceBuilding)
+        public void ShowMapBuildingView(BuildingMapObject buildingMapObject)
         {
-            IMapUIObjectView view = _mapUIProvider.GetMapUIView(electricFurnaceBuilding.Key);
-            view.Init(electricFurnaceBuilding);
-            view.Show();
+            IMapUIObjectView view = _mapUIProvider.GetMapUIView(buildingMapObject.Key);
+            if (view != null)
+            {
+                view.Init(buildingMapObject);
+                view.Show();    
+            }
+            else
+            {
+                Debug.LogWarning($"[MapUIHandler] View for building {buildingMapObject.Key} not found");
+            }
         }
 
         public void HideMapBuildingView(BuildingMapObject electricFurnaceBuilding)
         {
             IMapUIObjectView view = _mapUIProvider.GetMapUIView(electricFurnaceBuilding.Key);            
-            view.Hide();
+            if (view != null)
+            {
+                view.Hide();
+            }
         }
         
         public void HideElectricFurnaceView()

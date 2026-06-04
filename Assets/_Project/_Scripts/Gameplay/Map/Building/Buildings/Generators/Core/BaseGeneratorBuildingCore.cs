@@ -26,9 +26,11 @@ namespace Gameplay.Map.Building.Generators
         public virtual void Tick(float time)
         {
             ElectricityContainer.Add(time * _generatorBuildingSettingsData.Power);
-            OnEnergyProduced?.Invoke(time * _generatorBuildingSettingsData.Power);
+            RaiseOnEnergyProduced(time * _generatorBuildingSettingsData.Power);
             Debugging.Log(this, $"Electricity : {ElectricityContainer.CurrentValue}A");
         }
+
+        protected void RaiseOnEnergyProduced(float value) => OnEnergyProduced?.Invoke(value);
 
         public void OnNeighbourUpdated(ICell cell, Vector2Int direction)
         {

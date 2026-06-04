@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8927c0810111a4eb6ef550d88b339a, type: 3}
+  m_Name: MineBuildingSettingsDataAsset
+  m_EditorClassIdentifier: GameAssembly::Gameplay.Map.Building.Mine.MineBuildingSettingsDataAsset
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  <BuildingMapObject>k__BackingField: {fileID: 5793621791977050104, guid: cecfa4de04c303f4785d656bedf36a62, type: 3}
+  <Name>k__BackingField: Mine
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField:
+    - <BuildingPlacementValidationType>k__BackingField: 2
+      <CellTypes>k__BackingField: 060000000700000008000000
+    <MultiplyPlacing>k__BackingField: 0
+  <Price>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 0}
+  <BuildingCost>k__BackingField: []
+  <MineSettings>k__BackingField:
+    Key: mine_building
+    Name: 
+    ElectricityPerExtraction: 10
+    MiningInterval: 2
+    StorageCellCapacity: 50
+    <OreItemMappings>k__BackingField:
+    - CellType: 6
+      Item: {fileID: 11400000, guid: bc29c91edf69c854d850eb691cf8ef0e, type: 2}
+    - CellType: 8
+      Item: {fileID: 11400000, guid: 7d8201d7409b713428d1cbfc5960ad56, type: 2}
+    - CellType: 7
+      Item: {fileID: 11400000, guid: d3339a08e71614242896610170e62124, type: 2}
