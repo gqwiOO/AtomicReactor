@@ -1,4 +1,5 @@
-﻿using Gameplay.Map.Building.Items.Provider;
+﻿using Gameplay.Inventories;
+using Gameplay.Map.Building.Items.Provider;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ namespace Gameplay.Map.Building
         [Inject]
         private void Construct(IItemsDataProvider itemsDataProvider) => _itemsDataProvider = itemsDataProvider;
 
-        public void Init(IItemContainer itemContainer)
+        public void Init(IInventory itemContainer)
         {
             if (_itemContainer != null)
                 _itemContainer.OnAmountChanged -= OnAmountChanged;

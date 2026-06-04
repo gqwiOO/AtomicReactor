@@ -9241,7 +9241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee1306ad6a249549775333d3c00b055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Keys>k__BackingField: []
+  <Keys>k__BackingField:
+  - electric_furnace
   hasCloseButton: 1
   closeButton: {fileID: 555167154}
   _electricityCurrentValueView: {fileID: 1445222932}

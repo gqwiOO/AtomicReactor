@@ -20,7 +20,7 @@ namespace Gameplay.Crafting
         {
             foreach (var item in craft.Inputs)
             {
-                int removedAmount = inventory.Remove(item.ItemId, item.Amount);
+                int removedAmount = inventory.Extract(item.ItemId, item.Amount);
                 yield return (item.ItemId, removedAmount);
             }
         }

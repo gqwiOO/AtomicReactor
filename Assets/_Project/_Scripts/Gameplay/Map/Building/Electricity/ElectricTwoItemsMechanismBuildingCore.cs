@@ -28,7 +28,7 @@ namespace Gameplay.Map.Building.Electricity
             if (!ElectricityContainer.CanConsume(buildingEnergyPowerPerTick))
                 return;
             
-            if (!ElectricityContainer.CanConsume(buildingEnergyPowerPerTick) || !ItemInputContainer.CanExtract(1))
+            if (!ElectricityContainer.CanConsume(buildingEnergyPowerPerTick) || !ItemInputContainer.HasEnough(1))
                 return;
             
             ElectricityContainer.Consume(buildingEnergyPowerPerTick);

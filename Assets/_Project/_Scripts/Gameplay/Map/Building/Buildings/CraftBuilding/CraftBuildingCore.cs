@@ -67,7 +67,7 @@ namespace Gameplay.Map.Building.CraftBuilding
             Debugging.Log(this,$"Item crafted : {_craftData.Outputs.First().ItemId} with amount {_craftData.Outputs.First().Amount}");
 
             foreach (var output in _craftData.Inputs)
-                _inventoryInside.Remove(output.ItemId, output.Amount);
+                _inventoryInside.Extract(output.ItemId, output.Amount);
             
             foreach (var output in _craftData.Outputs)
                 ItemOutputContainer.Add(output.ItemId, output.Amount);

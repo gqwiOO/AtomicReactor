@@ -19,6 +19,6 @@ namespace Gameplay.Map.Building
             => InventoryCell?.ItemId ?? -1;
 
         public void ExtractForPipe(int itemId, int amount)
-            => Storage?.Remove(itemId, amount);
+            => Storage?.Extract(itemId, amount);
     }
 }

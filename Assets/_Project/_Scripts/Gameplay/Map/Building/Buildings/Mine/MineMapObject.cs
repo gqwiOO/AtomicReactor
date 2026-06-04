@@ -20,7 +20,7 @@ namespace Gameplay.Map.Building.Mine
         public override float MiningRatePerSecond => _core?.MiningRatePerSecond ?? 0f;
 
         [Inject]
-        private void ConstructMine(IMapCellsService mapCellsService)
+        private void Construct(IMapCellsService mapCellsService)
         {
             _mapCellsService = mapCellsService;
         }

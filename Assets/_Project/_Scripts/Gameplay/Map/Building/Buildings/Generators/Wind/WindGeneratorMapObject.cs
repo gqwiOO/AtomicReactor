@@ -27,14 +27,12 @@ namespace Gameplay.Map.Building.Generators
 
         public override void Tick()
         {
-            
+            _windGeneratorBuildingCore.Tick(Time.deltaTime);
         }
 
         public override void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int direction)
         {
             
         }
-
-        
     }
 }

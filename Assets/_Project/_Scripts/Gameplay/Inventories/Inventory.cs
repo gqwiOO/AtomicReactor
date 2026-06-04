@@ -11,7 +11,7 @@ namespace Gameplay.Inventories
     {
         public int Capacity;
         public int CellCapacity;
-        private List<InventoryCell> Cells;
+        protected List<InventoryCell> Cells;
 
         public IEnumerable<InventoryCell> InventoryCells => Cells;
 
@@ -64,7 +64,7 @@ namespace Gameplay.Inventories
             OnChanged?.Invoke();
         }
 
-        public int Remove(int itemId, int amount = 1)
+        public int Extract(int itemId, int amount = 1)
         {
             for (int i = Cells.Count - 1; i >= 0 && amount > 0; i--)
             {
@@ -110,7 +110,7 @@ namespace Gameplay.Inventories
     {
         IEnumerable<InventoryCell> InventoryCells { get; }
         bool HasEnough(int itemId, int amount = 1);
-        int Remove(int itemId, int amount = 1);
+        int Extract(int itemId, int amount = 1);
         bool CanAdd(int itemId, int amount);
 
         int GetItemCount(int itemId);
