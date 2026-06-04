@@ -40,6 +40,10 @@ namespace Gameplay.Transportation.ItemPipeSystem
 
                 int itemId = source.GetExtractableItemId();
                 if (itemId == -1) continue;
+                
+                bool hasDestinationForItem = HasDestinationForItem(sourceCell, source, itemId);
+                
+                if(!hasDestinationForItem) continue;
 
                 foreach (var (targetCell, target) in Targets)
                 {
@@ -51,6 +55,11 @@ namespace Gameplay.Transportation.ItemPipeSystem
                     break;
                 }
             }
+        }
+
+        private bool HasDestinationForItem(ICell sourceCell, IItemExtractionSource source, int itemId)
+        {
+            return true;
         }
 
         public void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int direction)

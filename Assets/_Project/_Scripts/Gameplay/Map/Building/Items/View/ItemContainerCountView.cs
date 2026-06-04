@@ -12,34 +12,34 @@ namespace Gameplay.Map.Building
         [SerializeField] private TMP_Text _textField;
         [SerializeField] private Image _itemIcon;
 
-        private IItemContainer _itemContainer;
+        private SingleCellInventory _itemContainer;
         private IItemsDataProvider _itemsDataProvider;
 
         [Inject]
         private void Construct(IItemsDataProvider itemsDataProvider) => _itemsDataProvider = itemsDataProvider;
 
-        public void Init(IInventory itemContainer)
+        public void Init(SingleCellInventory itemContainer)
         {
             if (_itemContainer != null)
-                _itemContainer.OnAmountChanged -= OnAmountChanged;
+                _itemContainer.OnChanged -= OnChanged;
 
             _itemContainer = itemContainer;
-            _itemContainer.OnAmountChanged += OnAmountChanged;
+            _itemContainer.OnChanged += OnChanged;
 
-            OnAmountChanged(_itemContainer.Amount);
+            OnChanged();
         }
 
         private void OnDestroy()
         {
             if (_itemContainer != null)
-                _itemContainer.OnAmountChanged -= OnAmountChanged;
+                _itemContainer.OnChanged -= OnChanged;
         }
 
-        private void OnAmountChanged(int newValue)
+        private void OnChanged()
         {
-            _textField.text = newValue.ToString();
+            _textField.text = _itemContainer.Amount.ToString();
 
-            if (_itemIcon != null && newValue > 0)
+            if (_itemIcon != null && _itemContainer.Amount > 0)
             {
                 var sprite = _itemsDataProvider.GetItemSprite(_itemContainer.ItemId);
                 if (sprite) _itemIcon.sprite = sprite;

@@ -121,5 +121,7 @@ namespace Gameplay.Transportation.ItemPipeSystem
         {
             UpdatePipeConnections(notifyNeighbours: false);
         }
+
+        protected virtual bool CanTransport(int itemId) => true;
     }
 }

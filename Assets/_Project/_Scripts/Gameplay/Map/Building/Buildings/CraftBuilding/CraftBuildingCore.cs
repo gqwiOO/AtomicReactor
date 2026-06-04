@@ -19,13 +19,13 @@ namespace Gameplay.Map.Building.CraftBuilding
         private CraftData _craftData;
         private float _craftTimer;
         
-        public IItemContainer ItemOutputContainer { get; private set; }
+        public SingleCellInventory ItemOutputContainer { get; private set; }
         public IInventory InputInventory => _inventoryInside;
 
         public CraftBuildingCore() : base()
         {
             _inventoryInside = new Inventory(10,10);
-            ItemOutputContainer = new ItemContainer();
+            ItemOutputContainer = new SingleCellInventory();
         }
         
         public void SetCraftData(CraftData craftData)

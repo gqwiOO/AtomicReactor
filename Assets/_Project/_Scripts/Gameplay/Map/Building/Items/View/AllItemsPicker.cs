@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Gameplay.Map.Building.Items.Provider;
 using Mechanics.Pools;
 using UnityEngine;
@@ -10,11 +12,17 @@ namespace Gameplay.Map.Building.Items.View
     {
         [SerializeField] public PoolGameObjects itemViewsPool;
         [SerializeField] public Transform container;
+        [SerializeField] private bool selectableViews;
+
+        [SerializeField] private bool hideOnSelect;
         
         private IItemsDataProvider _itemsDataProvider;
+        
+        private Dictionary<int, ItemView> _viewsByItemId = new Dictionary<int, ItemView>();
 
         private bool _isInited;
-        public event Action<int> OnItemSelected;
+        
+        public event Action<ItemView, int> OnItemSelected;
 
         [Inject]
         private void Construct(IItemsDataProvider itemsDataProvider)
@@ -35,15 +43,30 @@ namespace Gameplay.Map.Building.Items.View
                 itemView.Set(item.ItemId);
                 itemView.transform.SetParent(container);
                 itemView.OnClicked += ItemView_OnClicked;
+                _viewsByItemId.Add(item.ItemId, itemView);
             }
 
             _isInited = true;
         }
 
-        private void ItemView_OnClicked(int obj)
+        public void SetSelectedViewsByItemId(IEnumerable<int> itemIds)
         {
-            OnItemSelected?.Invoke(obj);
-            Hide(); 
+            foreach (var (key, itemView) in _viewsByItemId)
+            {
+                itemView.SetSelected(itemIds.Contains(key));
+            }
+        }
+
+        private void ItemView_OnClicked(ItemView itemView, int obj)
+        {
+            if (selectableViews)
+            {
+                itemView.SetSelected(!itemView.IsSelected);
+            }
+            
+            OnItemSelected?.Invoke(itemView, obj);
+            if(hideOnSelect)
+                Hide();
         }
 
         public void Show()

@@ -48,7 +48,7 @@ namespace Gameplay.Map.Building.CraftBuilding.View
             allItemsPicker.OnItemSelected += AllItemsPicker_OnItemSelected;
         }
 
-        private void AllItemsPicker_OnItemSelected(int itemId)
+        private void AllItemsPicker_OnItemSelected(ItemView itemView, int itemId)
         {
             craftResultView.Set(itemId);
             allItemsPicker.Hide();

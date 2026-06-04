@@ -1,5 +1,6 @@
 using System;
 using Gameplay.Fuel;
+using Gameplay.Inventories;
 using Gameplay.Transportation.WaterPipeSystem;
 
 namespace Gameplay.Map.Building.Generators.HeatGenerator
@@ -8,7 +9,7 @@ namespace Gameplay.Map.Building.Generators.HeatGenerator
     {
         private readonly HeatGeneratorSettingsData _settings;
 
-        public IItemContainer ItemFuelContainer { get; }
+        public SingleCellInventory ItemFuelContainer { get; }
         public IFluidProvider FluidFuelProvider { get; }
 
         public bool IsRunning => _burnEnergyJoules > 0f;
@@ -38,7 +39,7 @@ namespace Gameplay.Map.Building.Generators.HeatGenerator
             : base(settings)
         {
             _settings = settings;
-            ItemFuelContainer = new ItemContainer();
+            ItemFuelContainer = new SingleCellInventory();
             FluidFuelProvider = new FluidProvider();
         }
 
@@ -81,7 +82,7 @@ namespace Gameplay.Map.Building.Generators.HeatGenerator
         {
             if (_burnEnergyJoules > 0f) return;
             if (_settings.AcceptedFuels == null) return;
-            if (!ItemFuelContainer.CanExtract()) return;
+            if (!ItemFuelContainer.HasEnough()) return;
 
             foreach (var fuel in _settings.AcceptedFuels)
             {
@@ -89,7 +90,7 @@ namespace Gameplay.Map.Building.Generators.HeatGenerator
                 if (fuel.ItemAsset == null) continue;
                 if (ItemFuelContainer.ItemId != fuel.ItemAsset.ItemId) continue;
 
-                ItemFuelContainer.Extract();
+                ItemFuelContainer.Extract(ItemFuelContainer.ItemId);
                 _burnEnergyJoules += fuel.EnergyInJoules;
                 break;
             }
