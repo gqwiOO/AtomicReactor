@@ -7,7 +7,17 @@ namespace Gameplay.Transportation.ItemPipeSystem
 {
     public class ItemPipeSystem : IItemPipeSystem
     {
+        private static readonly Vector2Int[] Directions = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
+
         private List<IItemPipe> _pipes = new();
+        private Dictionary<Vector2Int, IItemPipe> _pipesByPosition = new();
+
+        public int Key { get; private set; }
+
+        public ItemPipeSystem()
+        {
+            Key = GetHashCode();
+        }
 
         public IEnumerable<IItemPipe> Pipes => _pipes;
         public IList<(ICell cell, IItemExtractionSource source)> Sources { get; private set; } = new List<(ICell, IItemExtractionSource)>();
@@ -17,8 +27,13 @@ namespace Gameplay.Transportation.ItemPipeSystem
         private const float TransferInterval = 0.5f;
         private const int TransferAmount = 1;
         private int _lastTickedFrame = -1;
+        private int _roundRobinIndex;
 
-        public void AddPipe(IItemPipe pipe) => _pipes.Add(pipe);
+        public void AddPipe(IItemPipe pipe)
+        {
+            _pipes.Add(pipe);
+            _pipesByPosition[pipe.CellPosition] = pipe;
+        }
 
         public void Tick(float deltaTime)
         {
@@ -40,15 +55,20 @@ namespace Gameplay.Transportation.ItemPipeSystem
 
                 int itemId = source.GetExtractableItemId();
                 if (itemId == -1) continue;
-                
-                bool hasDestinationForItem = HasDestinationForItem(sourceCell, source, itemId);
-                
-                if(!hasDestinationForItem) continue;
 
-                foreach (var (targetCell, target) in Targets)
+                int count = Targets.Count;
+                if (count == 0) continue;
+                if (_roundRobinIndex >= count) _roundRobinIndex = 0;
+
+                for (int i = 0; i < count; i++)
                 {
+                    int idx = (_roundRobinIndex + i) % count;
+                    var (targetCell, target) = Targets[idx];
+                    _roundRobinIndex = (idx + 1) % count;
+
                     if (targetCell == sourceCell) continue;
                     if (!target.CanInsertFromPipe(itemId, TransferAmount)) continue;
+                    if (!CanReachTarget(sourceCell, targetCell, itemId)) continue;
 
                     source.ExtractForPipe(itemId, TransferAmount);
                     target.InsertFromPipe(itemId, TransferAmount);
@@ -59,7 +79,30 @@ namespace Gameplay.Transportation.ItemPipeSystem
 
         private bool HasDestinationForItem(ICell sourceCell, IItemExtractionSource source, int itemId)
         {
-            return true;
+            foreach (var (targetCell, _) in Targets)
+                if (targetCell != sourceCell && CanReachTarget(sourceCell, targetCell, itemId))
+                    return true;
+            return false;
+        }
+
+        private bool CanReachTarget(ICell sourceCell, ICell targetCell, int itemId)
+        {
+            var visited = new HashSet<Vector2Int> { sourceCell.Position };
+            var queue = new Queue<Vector2Int>();
+            queue.Enqueue(sourceCell.Position);
+
+            while (queue.Count > 0)
+            {
+                var current = queue.Dequeue();
+                foreach (var dir in Directions)
+                {
+                    var neighbor = current + dir;
+                    if (neighbor == targetCell.Position) return true;
+                    if (_pipesByPosition.TryGetValue(neighbor, out var pipe) && pipe.CanTransport(itemId) && visited.Add(neighbor))
+                        queue.Enqueue(neighbor);
+                }
+            }
+            return false;
         }
 
         public void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int direction)
@@ -113,6 +156,7 @@ namespace Gameplay.Transportation.ItemPipeSystem
                 {
                     pipe.UpdateParentSystem(this);
                     _pipes.Add(pipe);
+                    _pipesByPosition[pipe.CellPosition] = pipe;
                 }
 
                 foreach (var (cell, source) in system.Sources)
@@ -130,6 +174,7 @@ namespace Gameplay.Transportation.ItemPipeSystem
         public void Dispose()
         {
             _pipes = null;
+            _pipesByPosition = null;
             Sources = null;
             Targets = null;
         }

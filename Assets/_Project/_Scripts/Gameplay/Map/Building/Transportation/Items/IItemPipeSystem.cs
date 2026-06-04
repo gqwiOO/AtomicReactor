@@ -7,6 +7,7 @@ namespace Gameplay.Transportation.ItemPipeSystem
 {
     public interface IItemPipeSystem : IDisposable
     {
+        int Key { get; }
         IEnumerable<IItemPipe> Pipes { get; }
         IList<(ICell cell, IItemExtractionSource source)> Sources { get; }
         IList<(ICell cell, IItemInsertionTarget target)> Targets { get; }

@@ -110,6 +110,7 @@ namespace Gameplay.Transportation.ItemPipeSystem
         public void UpdateParentSystem(IItemPipeSystem system)
         {
             ParentPipeSystem = system;
+            gameObject.name = $"{GetType().Name} [System: {system.Key}]";
         }
 
         public void RotateTowardDirection(Vector4 neighbourStates)
@@ -122,6 +123,6 @@ namespace Gameplay.Transportation.ItemPipeSystem
             UpdatePipeConnections(notifyNeighbours: false);
         }
 
-        protected virtual bool CanTransport(int itemId) => true;
+        public virtual bool CanTransport(int itemId) => true;
     }
 }

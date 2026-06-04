@@ -27,7 +27,7 @@ namespace Gameplay.Transportation.Sorters
             }
         }
 
-        protected override bool CanTransport(int itemId)
+        public override bool CanTransport(int itemId)
         {
             return _allowedItems.Contains(itemId);
         }
