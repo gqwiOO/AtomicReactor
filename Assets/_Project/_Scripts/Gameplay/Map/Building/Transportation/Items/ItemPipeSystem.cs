@@ -59,12 +59,12 @@ namespace Gameplay.Transportation.ItemPipeSystem
                 int count = Targets.Count;
                 if (count == 0) continue;
                 if (_roundRobinIndex >= count) _roundRobinIndex = 0;
+                
 
                 for (int i = 0; i < count; i++)
                 {
                     int idx = (_roundRobinIndex + i) % count;
                     var (targetCell, target) = Targets[idx];
-                    _roundRobinIndex = (idx + 1) % count;
 
                     if (targetCell == sourceCell) continue;
                     if (!target.CanInsertFromPipe(itemId, TransferAmount)) continue;
@@ -72,8 +72,9 @@ namespace Gameplay.Transportation.ItemPipeSystem
 
                     source.ExtractForPipe(itemId, TransferAmount);
                     target.InsertFromPipe(itemId, TransferAmount);
+                    _roundRobinIndex = (idx + 1) % count;
                     break;
-                }
+                }   
             }
         }
 
