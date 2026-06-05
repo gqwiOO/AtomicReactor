@@ -6,18 +6,17 @@ using Gameplay.Map.Building.Electricity;
 using Gameplay.Map.Building.Furnace;
 using Gameplay.Map.Building.SettingsProvider;
 using Gameplay.Map.Cell;
+using Gameplay.Transportation.ItemPipeSystem;
 using UnityEngine;
 using Zenject;
 
 namespace Gameplay.Map.Building
 {
-    public class ElectricFurnaceMapBuilding : BuildingMapObject, ISidesBuildingMapObject, IElectricBuildingCore
+    public class ElectricFurnaceMapBuilding : BuildingMapObject, ISidesBuildingMapObject, IElectricBuildingCore, IItemExtractionSource
     {
         [field: SerializeField]
         public ElectricTwoItemsMechanismBuildingCoreCore ElectricTwoItemsMechanismBuildingCoreCore { get; private set; }
-
-        private ChestBuilding _outputContainer;
-
+        
         public BuildingSidesData BuildingSidesData => ElectricTwoItemsMechanismBuildingCoreCore.BuildingSidesData;
 
         public IElectricityContainer ElectricityContainer => ElectricTwoItemsMechanismBuildingCoreCore.ElectricityContainer;
@@ -47,7 +46,6 @@ namespace Gameplay.Map.Building
         private void ElectricTwoItemsMechanismBuildingCoreCoreOnItemProduced()
         {
             // TriggerUpdate();
-            TryExtractOutput();
         }
 
         public override void Tick()
@@ -57,9 +55,6 @@ namespace Gameplay.Map.Building
 
         public override void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int direction)
         {
-            SideType sideData = ElectricTwoItemsMechanismBuildingCoreCore.BuildingSidesData.GetSide(direction);
-
-            TrySetOutputContainer(neighborCell, sideData);
             TrySetElectricityInputContainer(neighborCell, direction);
         }
 
@@ -68,26 +63,19 @@ namespace Gameplay.Map.Building
             ElectricTwoItemsMechanismBuildingCoreCore.CheckElectricityInput(neighborCell,direction);
         }
 
-        private void TrySetOutputContainer(ICell neighborCell, SideType sideData)
+        public bool HasItemsForPipe()
         {
-            if (sideData == SideType.Output && neighborCell.CellVisitor is ChestBuilding chestBuilding &&
-                chestBuilding.CanAdd(ElectricTwoItemsMechanismBuildingCoreCore.ItemOutputContainer.ItemId,
-                    ElectricTwoItemsMechanismBuildingCoreCore.ItemOutputContainer.Amount))
-            {
-                _outputContainer ??= chestBuilding;
-                TryExtractOutput();
-            }
+            return ElectricTwoItemsMechanismBuildingCoreCore.ItemOutputContainer.HasEnough(1);
         }
 
-        private void TryExtractOutput()
+        public int GetExtractableItemId()
         {
-            if (_outputContainer && _outputContainer.CanAdd(ElectricTwoItemsMechanismBuildingCoreCore.ItemOutputContainer.ItemId,ElectricTwoItemsMechanismBuildingCoreCore.ItemOutputContainer.Amount))
-            {
-                _outputContainer.AddResource(ElectricTwoItemsMechanismBuildingCoreCore.ItemOutputContainer.ItemId,
-                    ElectricTwoItemsMechanismBuildingCoreCore.ItemOutputContainer.Amount);
-                
-                ElectricTwoItemsMechanismBuildingCoreCore.ItemOutputContainer.Extract(ElectricTwoItemsMechanismBuildingCoreCore.ItemOutputContainer.Amount);
-            }
+            return ElectricTwoItemsMechanismBuildingCoreCore.ItemOutputContainer.ItemId;
+        }
+
+        public void ExtractForPipe(int itemId, int amount)
+        {
+            ElectricTwoItemsMechanismBuildingCoreCore.ItemOutputContainer?.Extract(itemId, amount);
         }
     }
 

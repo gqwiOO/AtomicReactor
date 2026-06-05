@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 805bb882e2c64035ae3d947d90a8b769, type: 3}
-  m_Name: WindGeneratorBuildingSettingsDataAsset
-  m_EditorClassIdentifier: GameAssembly::Gameplay.Map.Building.WindGeneratorBuildingSettingsDataAsset
+  m_Script: {fileID: 11500000, guid: 7b42ab57b897fc047a0c537542fbefa6, type: 3}
+  m_Name: ItemSorterSettingsDataAsset
+  m_EditorClassIdentifier: GameAssembly::Gameplay.Transportation.ItemPipeSystem.ItemPipeSettingsDataAsset
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -21,19 +21,13 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  <BuildingMapObject>k__BackingField: {fileID: 8863707527380315529, guid: f4c98743ba0ea3d46b7f4a8cc760288d, type: 3}
-  <Name>k__BackingField: Wind Generator
+  <BuildingMapObject>k__BackingField: {fileID: 498362403170637797, guid: ed0d0d7b81559744dae33a29506a11e5, type: 3}
+  <Name>k__BackingField: Item Sorter
   <BuildingPlacementSettings>k__BackingField:
     <CellTypeValidation>k__BackingField: []
-    <MultiplyPlacing>k__BackingField: 0
+    <MultiplyPlacing>k__BackingField: 1
   <Price>k__BackingField: 0
   <Icon>k__BackingField: {fileID: 0}
   <BuildingCost>k__BackingField: []
-  <GeneratorBuildingSettingsData>k__BackingField:
-    Key: wind_generator
-    Name: Wind Generator
-    Efficiency: 0.8
-    Power: 10
-    Ah_BatteryCapacity: 1000
-    BuildingSidesData:
-      AllowedTypes: 
+  <TransferInterval>k__BackingField: 0.25
+  <TransferAmount>k__BackingField: 1

@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Gameplay.Inventories;
 using Gameplay.Map.Building.Electricity;
 using Gameplay.Map.Building.Electricity.Consumer;
 using Gameplay.Map.Building.Fluids.Tanks;
@@ -16,7 +17,7 @@ namespace Gameplay.Map.Building.Generators.HeatGenerator
         public override IElectricityProvider ElectricityProvider { get; protected set; }
         public override float Power => _core.Power;
 
-        public IItemContainer ItemFuelContainer => _core.ItemFuelContainer;
+        public SingleCellInventory ItemFuelContainer => _core.ItemFuelContainer;
 
         // IFluidBuildingContainer — exposes the internal fluid fuel tank to the pipe system
         public IFloatContainer FloatContainer => _core.FluidFuelProvider.FloatContainer;

@@ -1,12 +1,14 @@
-﻿namespace Gameplay.Map.Building.Generators.Core
+﻿using Gameplay.Inventories;
+
+namespace Gameplay.Map.Building.Generators.Core
 {
     public class SteamElectricityGeneratorBuildingCore : BaseGeneratorBuildingCore
     {
-        public IItemContainer _itemContainer;
-        
+        public SingleCellInventory _itemContainer;
+
         public SteamElectricityGeneratorBuildingCore(GeneratorBuildingSettingsData generatorBuildingSettingsData) : base(generatorBuildingSettingsData)
         {
-            _itemContainer = new ItemContainer();
+            _itemContainer = new SingleCellInventory();
         }
 
         public override void Tick(float time)

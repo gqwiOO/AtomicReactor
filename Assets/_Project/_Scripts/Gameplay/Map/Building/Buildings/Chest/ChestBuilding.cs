@@ -50,7 +50,7 @@ namespace Gameplay.Map.Building.Chest
                 .FirstOrDefault(c => c.ItemId != -1 && c.Amount > 0)?.ItemId ?? -1;
 
         public void ExtractForPipe(int itemId, int amount)
-            => InventoryBuildingCore?.Inventory.Remove(itemId, amount);
+            => InventoryBuildingCore?.Inventory.Extract(itemId, amount);
 
         public bool CanInsertFromPipe(int itemId, int amount = 1)
             => IsWorking && InventoryBuildingCore?.Inventory.CanAdd(itemId, amount) == true;

@@ -1,4 +1,5 @@
 ﻿using System;
+using Gameplay.Inventories;
 using Gameplay.Map.Cell;
 using UnityEngine;
 
@@ -6,8 +7,8 @@ namespace Gameplay.Map.Building.Electricity
 {
     public abstract class BaseTwoItemsMechanismBuildingCore: IBuildingCore
     {
-        public IItemContainer ItemInputContainer { get; private set; }
-        public IItemContainer ItemOutputContainer { get; private set; }
+        public SingleCellInventory ItemInputContainer { get; private set; }
+        public SingleCellInventory ItemOutputContainer { get; private set; }
 
         public BuildingSidesData BuildingSidesData { get; protected set; } =
             new BuildingSidesData(SideType.Input, SideType.None, SideType.Output, SideType.None);
@@ -16,8 +17,8 @@ namespace Gameplay.Map.Building.Electricity
 
         public BaseTwoItemsMechanismBuildingCore()
         {
-            ItemInputContainer = new ItemContainer(100, 1);
-            ItemOutputContainer = new ItemContainer();
+            ItemInputContainer = new SingleCellInventory();
+            ItemOutputContainer = new SingleCellInventory();
         }
 
         public abstract void Tick(float time);

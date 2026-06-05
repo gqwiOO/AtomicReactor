@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Gameplay.Map.Building.Items.Provider;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -12,14 +13,25 @@ namespace Gameplay.Map.Building.Items.View
         [SerializeField] private ItemIconView iconView;
 
         [SerializeField] private bool isInteractable;
+        [SerializeField] private bool selectable;
         
         [ShowIf(nameof(isInteractable))]
         [SerializeField] private Button button;
         
+        [ShowIf(nameof(selectable))] 
+        [SerializeField]
+        private List<GameObject> selectedState;
+        
+        [ShowIf(nameof(selectable))] 
+        [SerializeField]
+        private List<GameObject> unselectedState;
+        
+        public bool IsSelected { get; private set; }
+        
         private IItemsDataProvider _itemsDataProvider;
         private int _itemId;
 
-        public event Action<int> OnClicked;
+        public event Action<ItemView,int> OnClicked;
 
         [Inject]
         private void Construct(IItemsDataProvider itemsDataProvider)
@@ -39,7 +51,7 @@ namespace Gameplay.Map.Building.Items.View
                 button.onClick.RemoveListener(Button_OnClick);
         }
 
-        private void Button_OnClick() => OnClicked?.Invoke(_itemId);
+        private void Button_OnClick() => OnClicked?.Invoke(this, _itemId);
 
         public void Set(int itemId)
         {
@@ -50,6 +62,15 @@ namespace Gameplay.Map.Building.Items.View
         public void SetAvailable(bool isAvailable)
         {
             iconView.SetAvailableState(isAvailable);
+        }
+        
+        public void SetSelected(bool isSelected)
+        {
+            IsSelected = isSelected;
+            foreach (var state in selectedState)
+                state.SetActive(isSelected);
+            foreach (var state in unselectedState)
+                state.SetActive(!isSelected);
         }
     }
 }

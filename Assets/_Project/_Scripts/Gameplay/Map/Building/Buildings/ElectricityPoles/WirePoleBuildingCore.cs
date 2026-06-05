@@ -57,7 +57,7 @@ namespace Gameplay.Map.Building.ElectricityPoles
 
         private void RecheckNeighbourCellOnUpdate(ICell cell)
         {
-            if (cell.CellVisitor is BuildingMapObject buildingMapObject)
+            if (cell.CellVisitor is BuildingMapObject buildingMapObject && buildingMapObject.IsWorking)
             {
                 if (buildingMapObject is IElectricResourceBuilding electricResourceBuilding && electricResourceBuilding.ElectricityProvider != null)
                     WireSystem.AddElectricityProvider(electricResourceBuilding.ElectricityProvider);

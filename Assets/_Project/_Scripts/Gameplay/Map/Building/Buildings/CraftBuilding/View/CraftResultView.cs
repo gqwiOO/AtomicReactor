@@ -1,4 +1,5 @@
 ﻿using System;
+using Gameplay.Inventories;
 using Gameplay.Map.Building.Items.View;
 using UnityEngine;
 
@@ -10,8 +11,6 @@ namespace Gameplay.Map.Building.CraftBuilding.View
         [SerializeField] private ItemContainerCountView itemContainerValueView;
 
         public event Action<int> OnClicked;
-        
-        private IItemContainer _itemContainer;
 
         private void Start()
         {
@@ -23,16 +22,16 @@ namespace Gameplay.Map.Building.CraftBuilding.View
             itemView.OnClicked -= ItemView_OnClicked;
         }
 
-        private void ItemView_OnClicked(int itemId)
+        private void ItemView_OnClicked(ItemView view, int itemId)
         {
             OnClicked?.Invoke(itemId);
         }
 
-        public void Init(IItemContainer itemContainer)
+        public void Init(SingleCellInventory itemContainer)
         {
             itemContainerValueView.Init(itemContainer);
         }
-        
+
         public void Set(int itemId)
         {
             itemView.Set(itemId);

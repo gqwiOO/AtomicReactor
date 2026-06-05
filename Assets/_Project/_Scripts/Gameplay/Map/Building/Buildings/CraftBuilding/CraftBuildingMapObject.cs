@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using Gameplay.Crafting;
 using Gameplay.Inventories;
 using Gameplay.Map.Building.Chest;
@@ -14,7 +13,7 @@ namespace Gameplay.Map.Building.CraftBuilding
         private CraftBuildingCore _craftBuildingCore;
         private IItemStorage _outputContainerInventory;
         
-        public IItemContainer ItemOutputContainer => _craftBuildingCore.ItemOutputContainer;
+        public SingleCellInventory ItemOutputContainer => _craftBuildingCore.ItemOutputContainer;
         public IInventory ItemsInputInventory => _craftBuildingCore.InputInventory;
 
         public override async UniTask Init(Vector2Int cellPosition)
@@ -53,16 +52,16 @@ namespace Gameplay.Map.Building.CraftBuilding
         {
             if (_craftBuildingCore.ItemOutputContainer == null)
                 return;
-            
+
             if (_craftBuildingCore.ItemOutputContainer.Amount == 0)
                 return;
 
             if (_outputContainerInventory == null)
                 return;
             int extractAmount = _craftBuildingCore.ItemOutputContainer.Amount;
-            _craftBuildingCore.ItemOutputContainer.Extract(extractAmount);
-            _outputContainerInventory.Add(_craftBuildingCore.ItemOutputContainer.ItemId, 
-                extractAmount);
+            int itemId = _craftBuildingCore.ItemOutputContainer.ItemId;
+            _craftBuildingCore.ItemOutputContainer.Extract(itemId, extractAmount);
+            _outputContainerInventory.Add(itemId, extractAmount);
         }
 
         public void SetRecipe(CraftData craftData)
