@@ -20,8 +20,8 @@ namespace Gameplay.Map.Building.Boiler
         public override async UniTask Init(Vector2Int cellPosition)
         {
             BoilerBuildingSettingsDataAsset settings = _buildingsSettingsProvider.GetBuildingSettings(Key) as BoilerBuildingSettingsDataAsset;
-            _core = new BoilerCore(settings.AcceptedFuels, settings.FuelCapacity, settings.WaterCapacity, settings.SteamCapacity,
-                settings.RequiredHeatPerWaterUnit, settings.RequiredWaterPerSteamUnit, settings.BuildingSidesData);
+            _core = new BoilerCore(settings.AcceptedFuels, settings.FuelCapacity, settings.M3_WaterCapacity, settings.M3_SteamCapacity,
+                settings.RequiredHeatPerWaterUnit, settings.M3_RequiredWaterPerSteamM3, settings.BuildingSidesData);
             await base.Init(cellPosition);
         }
 

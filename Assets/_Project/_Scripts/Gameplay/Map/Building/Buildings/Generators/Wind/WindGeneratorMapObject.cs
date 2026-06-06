@@ -13,7 +13,7 @@ namespace Gameplay.Map.Building.Generators
         private WindGeneratorBuildingSettingsDataAsset _buildingSettings;
 
         public override IElectricityProvider ElectricityProvider { get; protected set; }
-        public override float Power => _windGeneratorBuildingCore.Power;
+        public override float Power => _windGeneratorBuildingCore.KwPower;
         public override async UniTask Init(Vector2Int cellPosition)
         {
             _buildingSettings = _buildingsSettingsProvider.GetBuildingSettings(Key) as WindGeneratorBuildingSettingsDataAsset;

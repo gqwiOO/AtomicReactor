@@ -11,9 +11,7 @@ namespace Gameplay.Map.Building.Generators
         [Tooltip("Fraction of fuel energy converted to electricity (0=0%, 1=100%)")]
         public float Efficiency = 0.8f;
         
-        public float Power;
-        public float Ah_BatteryCapacity;
-
-        public BuildingSidesData BuildingSidesData;
+        public float KW_Power;
+        public float KWH_BatteryCapacity;
     }
 }

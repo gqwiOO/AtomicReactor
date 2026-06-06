@@ -6,7 +6,6 @@ namespace Gameplay.Map.Building
 {
     public interface IBuildingCore
     {
-        BuildingSidesData BuildingSidesData { get; }
         void Tick(float time);
         void OnNeighbourUpdated(ICell cell, Vector2Int direction);
     }

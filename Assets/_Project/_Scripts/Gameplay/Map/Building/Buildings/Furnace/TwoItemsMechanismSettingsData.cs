@@ -33,7 +33,6 @@ namespace Gameplay.Map.Building.Furnace
 
     public abstract class BuildingSettingsData
     {
-        public string Key;
-        public string Name;
+        
     }
 }

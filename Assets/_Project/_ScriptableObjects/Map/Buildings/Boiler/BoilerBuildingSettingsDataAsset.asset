@@ -30,11 +30,11 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 0}
   <BuildingCost>k__BackingField: []
   requiredHeatPerWaterUnit: 50
-  requiredWaterPerSteamUnit: 10
+  <M3_RequiredWaterPerSteamM3>k__BackingField: 2
   <BuildingSidesData>k__BackingField:
     AllowedTypes: 
   <AcceptedFuels>k__BackingField:
   - {fileID: 11400000, guid: a890f541efbc0074faf02863d81a0696, type: 2}
   <FuelCapacity>k__BackingField: 1000
-  <WaterCapacity>k__BackingField: 1000
-  <SteamCapacity>k__BackingField: 1000
+  <M3_WaterCapacity>k__BackingField: 500
+  <M3_SteamCapacity>k__BackingField: 500

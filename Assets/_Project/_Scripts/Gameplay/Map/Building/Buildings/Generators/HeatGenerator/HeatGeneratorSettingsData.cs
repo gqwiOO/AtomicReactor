@@ -10,10 +10,6 @@ namespace Gameplay.Map.Building.Generators.HeatGenerator
     [Serializable]
     public class HeatGeneratorSettingsData : GeneratorBuildingSettingsData
     {
-        [Range(0f, 1f)]
-        [Tooltip("Fraction of fuel energy converted to electricity (0=0%, 1=100%)")]
-        public float Efficiency = 0.8f;
-
         [Title("Fuel")]
         [Tooltip("Which fuels this generator can burn")]
         public List<FuelDataAsset> AcceptedFuels;
@@ -28,8 +24,8 @@ namespace Gameplay.Map.Building.Generators.HeatGenerator
     [Serializable]
     public class SteamGeneratorSettingsData : GeneratorBuildingSettingsData
     {
-        public int SteamContainerCapacity;
-        public int Capacity;
+        public int M3_SteamContainerCapacity;
+        public float M3_SteamUsagePer_KW;
     }
     
     [Serializable]

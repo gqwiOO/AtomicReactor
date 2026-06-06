@@ -15,7 +15,7 @@ namespace Gameplay.Map.Building.Generators.HeatGenerator
         private HeatGeneratorBuildingCore _core;
 
         public override IElectricityProvider ElectricityProvider { get; protected set; }
-        public override float Power => _core.Power;
+        public override float Power => _core.KwPower;
 
         public SingleCellInventory ItemFuelContainer => _core.FuelContainer.ItemFuelContainer;
 

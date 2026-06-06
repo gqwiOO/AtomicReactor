@@ -15,7 +15,7 @@ namespace Gameplay.Map.Building.Generators.Steam
         private SteamElectricityGeneratorBuildingCore _steamElectricityGeneratorBuildingCore;
 
         public override IElectricityProvider ElectricityProvider { get; protected set; }
-        public override float Power => _steamElectricityGeneratorBuildingCore.Power;
+        public override float Power => _steamElectricityGeneratorBuildingCore.KwPower;
         
         public FluidContainer SteamContainer => _steamElectricityGeneratorBuildingCore.SteamContainer;
         public IFluidContainer InsertionFluidContainer => SteamContainer;
