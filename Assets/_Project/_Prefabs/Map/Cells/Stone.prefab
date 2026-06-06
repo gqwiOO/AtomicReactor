@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5457996721086820317}
   - component: {fileID: 1013214608817558485}
   - component: {fileID: 4131734137351077950}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4889559913385682265}
   - component: {fileID: 5366375220733777863}
   - component: {fileID: 2390393150469252534}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 6595769304335929153}
   - component: {fileID: 6744871873290885377}
   - component: {fileID: 8743415637089761158}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,6 @@ MonoBehaviour:
   <CellSelectHandler>k__BackingField: {fileID: 8743415637089761158}
   <Position>k__BackingField: {x: 0, y: 0}
   <CellType>k__BackingField: 3
-  <Biome>k__BackingField: 0
 --- !u!114 &8743415637089761158
 MonoBehaviour:
   m_ObjectHideFlags: 0

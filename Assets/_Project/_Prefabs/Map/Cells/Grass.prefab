@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4889559913385682265}
   - component: {fileID: 5366375220733777863}
   - component: {fileID: 2390393150469252534}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,6 +62,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,9 +85,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &2390393150469252534
 BoxCollider:
@@ -121,7 +125,7 @@ GameObject:
   - component: {fileID: 6595769304335929153}
   - component: {fileID: 6744871873290885377}
   - component: {fileID: 8743415637089761158}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,12 +260,20 @@ PrefabInstance:
       value: -18.335
       objectReference: {fileID: 0}
     - target: {fileID: 4263640890667235564, guid: 3ae6206e904af0c48895349bb9e6097c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263640890667235564, guid: 3ae6206e904af0c48895349bb9e6097c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 5793573053730716907, guid: 3ae6206e904af0c48895349bb9e6097c, type: 3}
       propertyPath: m_Name
       value: land_86
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793573053730716907, guid: 3ae6206e904af0c48895349bb9e6097c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5793573053730716907, guid: 3ae6206e904af0c48895349bb9e6097c, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -342,6 +354,10 @@ PrefabInstance:
     - target: {fileID: 8225873007410484653, guid: 3ae6206e904af0c48895349bb9e6097c, type: 3}
       propertyPath: m_LightProbeUsage
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782915974820069779, guid: 3ae6206e904af0c48895349bb9e6097c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8782915974820069779, guid: 3ae6206e904af0c48895349bb9e6097c, type: 3}
       propertyPath: m_StaticEditorFlags

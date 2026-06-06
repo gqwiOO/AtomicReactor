@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6370242393305994432}
   - component: {fileID: 9132634817049484665}
   - component: {fileID: 1799814235581580720}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: land_86.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,6 +61,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -82,9 +84,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5793573053730716907
 GameObject:
@@ -95,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6569968264201676369}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: land_86
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +134,7 @@ GameObject:
   - component: {fileID: 4087963376401214870}
   - component: {fileID: 924090461765043487}
   - component: {fileID: 8225873007410484653}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: land_86.051
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,6 +184,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -201,7 +207,9 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
