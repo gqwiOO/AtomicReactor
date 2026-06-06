@@ -26,7 +26,7 @@ namespace Gameplay.Map.Building.Generators.HeatGenerator
             if (_burnEnergyJoules <= 0f)
                 return;
 
-            float energyNeeded = time * Power / _settings.Efficiency;
+            float energyNeeded = time * KwPower / _settings.Efficiency;
             float energyConsumed = Math.Min(_burnEnergyJoules, energyNeeded);
             _burnEnergyJoules -= energyConsumed;
 

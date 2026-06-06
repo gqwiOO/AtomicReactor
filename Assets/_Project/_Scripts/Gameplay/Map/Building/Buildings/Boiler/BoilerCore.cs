@@ -10,8 +10,8 @@ namespace Gameplay.Map.Building.Boiler
     public class BoilerCore : IBuildingCore
     {
         public FuelContainer FuelContainer { get; }
-        public FluidProvider SteamContainer { get; }
-        public IFloatContainer WaterContainer { get; }
+        public FluidContainer SteamContainer { get; }
+        public FluidContainer WaterContainer { get; }
 
         public BuildingSidesData BuildingSidesData { get; }
 
@@ -28,8 +28,8 @@ namespace Gameplay.Map.Building.Boiler
             BuildingSidesData buildingSidesData)
         {
             FuelContainer = new FuelContainer(acceptedFuels, fuelCapacity);
-            WaterContainer = new FloatContainer(waterCapacity);
-            SteamContainer = new FluidProvider(FluidType.Steam, steamCapacity);
+            WaterContainer = new FluidContainer(FluidType.Water, waterCapacity);
+            SteamContainer = new FluidContainer(FluidType.Steam, steamCapacity);
             _requiredHeatPerWaterUnit = requiredHeatPerWaterUnit;
             _requiredWaterPerSteamUnit = requiredWaterPerSteamUnit;
             BuildingSidesData = buildingSidesData;
@@ -60,7 +60,7 @@ namespace Gameplay.Map.Building.Boiler
             float energyConsumed = waterToConsume * _requiredHeatPerWaterUnit;
 
             FuelContainer.ConsumeEnergy(energyConsumed);
-            WaterContainer.Remove(waterToConsume);
+            WaterContainer.FloatContainer.Remove(waterToConsume);
             SteamContainer.AddFluid(FluidType.Steam, steamToAdd);
         }
 

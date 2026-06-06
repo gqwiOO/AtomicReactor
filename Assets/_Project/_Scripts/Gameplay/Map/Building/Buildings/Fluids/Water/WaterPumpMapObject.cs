@@ -15,7 +15,7 @@ namespace Gameplay.Map.Building.Fluids
     {
         private IMapCellsService _mapCellsService;
         
-        public IFluidProvider ExtractionFluidProvider { get; private set; }
+        public IFluidContainer ExtractionFluidContainer { get; private set; }
 
         [Inject]
         private void Construct(IMapCellsService mapCellsService)
@@ -25,7 +25,7 @@ namespace Gameplay.Map.Building.Fluids
         
         public override async UniTask Init(Vector2Int cellPosition)
         {
-            ExtractionFluidProvider = new FluidProvider(FluidType.Water, 1000);
+            ExtractionFluidContainer = new FluidContainer(FluidType.Water, 1000);
             await base.Init(cellPosition);
             InitRotation();
 
@@ -51,7 +51,7 @@ namespace Gameplay.Map.Building.Fluids
 
         public override void Tick()
         {
-            ExtractionFluidProvider.AddFluid(FluidType.Water, 1 * Time.deltaTime);
+            ExtractionFluidContainer.AddFluid(FluidType.Water, 1 * Time.deltaTime);
         }
 
         public override void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int direction)

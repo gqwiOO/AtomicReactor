@@ -10,14 +10,12 @@ namespace Gameplay.Map.Building.Boiler
     {
         [SerializeField] private float requiredHeatPerWaterUnit;
         public float RequiredHeatPerWaterUnit => requiredHeatPerWaterUnit;
-
-        [SerializeField] private float requiredWaterPerSteamUnit;
-        public float RequiredWaterPerSteamUnit => requiredWaterPerSteamUnit;
+        [field: SerializeField] public float M3_RequiredWaterPerSteamM3 { get; private set; }
 
         [field: SerializeField] public BuildingSidesData BuildingSidesData { get; private set; }
         [field: SerializeField] public List<FuelDataAsset> AcceptedFuels { get; private set; }
         [field: SerializeField] public int FuelCapacity { get; private set; }
-        [field: SerializeField] public int WaterCapacity { get; private set; }
-        [field: SerializeField] public int SteamCapacity { get; private set; }
+        [field: SerializeField] public int M3_WaterCapacity { get; private set; }
+        [field: SerializeField] public int M3_SteamCapacity { get; private set; }
     }
 }

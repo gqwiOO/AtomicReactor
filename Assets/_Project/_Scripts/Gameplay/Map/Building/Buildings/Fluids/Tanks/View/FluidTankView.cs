@@ -16,7 +16,7 @@ namespace Gameplay.Map.Building.Fluids.Tanks.View
 
         private void SpecificInit(IFluidInsertionTarget fluidBuildingContainer)
         {
-            floatContainerView.Init(fluidBuildingContainer.InsertionFloatContainer);
+            floatContainerView.Init(fluidBuildingContainer.InsertionFluidContainer.FloatContainer);
         }
     }
 }

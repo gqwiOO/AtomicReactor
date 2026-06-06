@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Gameplay.Map.Building.Fluids.Tanks;
 using Gameplay.Map.Cell;
 using UnityEngine;
@@ -11,8 +12,8 @@ namespace Gameplay.Transportation.WaterPipeSystem
         public IFloatContainer FloatContainer { get; private set; }
 
         public int Key { get; private set; }
-        public Dictionary<ICell, IFluidProvider> FluidSources { get; private set; }
-        public Dictionary<ICell, IFluidInsertionTarget> FluidBuildingContainers { get; set; }
+        public Dictionary<ICell, IFluidContainer> FluidExtractionContainers { get; private set; }
+        public Dictionary<ICell, IFluidInsertionTarget> FluidInsertionContainers { get; set; }
         public IEnumerable<IPipe> Pipes => _pipes;
         public FluidType FluidType { get; set; } = FluidType.None;
         public float CurrentValue => FloatContainer.CurrentValue;
@@ -20,30 +21,30 @@ namespace Gameplay.Transportation.WaterPipeSystem
         public PipeSystem()
         {
             FloatContainer = new FloatContainer();
-            FluidSources = new Dictionary<ICell, IFluidProvider>();
-            FluidBuildingContainers = new Dictionary<ICell, IFluidInsertionTarget>();
+            FluidExtractionContainers = new Dictionary<ICell, IFluidContainer>();
+            FluidInsertionContainers = new Dictionary<ICell, IFluidInsertionTarget>();
             Key = GetHashCode();
         }
 
-        private void TryAddFluidSource(ICell cell, IFluidProvider provider)
+        private void TryAddFluidSource(ICell cell, IFluidContainer provider)
         {
-            if (FluidSources.TryAdd(cell, provider))
+            if (FluidExtractionContainers.TryAdd(cell, provider))
                 provider.OnAdded += FluidProvider_OnValueChanged;
         }
 
         private void TryRemoveFluidSource(ICell cell)
         {
-            if (FluidSources.Remove(cell, out var provider))
+            if (FluidExtractionContainers.Remove(cell, out var provider))
                 provider.OnAdded -= FluidProvider_OnValueChanged;
         }
 
-        private void TryAddFluidContainer(ICell cell, IFluidInsertionTarget fluidContainer)
-            => FluidBuildingContainers.TryAdd(cell, fluidContainer);
+        private void TryAddFluidInsertionContainer(ICell cell, IFluidInsertionTarget fluidContainer)
+            => FluidInsertionContainers.TryAdd(cell, fluidContainer);
 
-        private void TryRemoveFluidContainer(ICell cell)
-            => FluidBuildingContainers.Remove(cell);
+        private void TryRemoveFluidInsertionContainer(ICell cell)
+            => FluidInsertionContainers.Remove(cell);
 
-        private void FluidProvider_OnValueChanged(FluidProvider fluidProvider)
+        private void FluidProvider_OnValueChanged(FluidContainer fluidProvider)
         {
             if (FluidType != fluidProvider.FluidType && FluidType != FluidType.None)
                 return;
@@ -51,10 +52,13 @@ namespace Gameplay.Transportation.WaterPipeSystem
 
             FloatContainer.Add(fluidProvider.CurrentValue);
             fluidProvider.ExtractFluid(fluidProvider.CurrentValue);
-            if (FloatContainer.CurrentValue > 0 && FluidBuildingContainers.Count > 0)
+            if (FloatContainer.CurrentValue > 0 && FluidInsertionContainers.Count > 0)
             {
-                float singlePipeFluidValue = FloatContainer.CurrentValue / FluidBuildingContainers.Count;
-                foreach (KeyValuePair<ICell, IFluidInsertionTarget> pair in FluidBuildingContainers)
+                IEnumerable<KeyValuePair<ICell, IFluidInsertionTarget>> validInsertionContainersCount = FluidInsertionContainers
+                    .Where(item => item.Value.InsertionFluidContainer.LockedFluidType == FluidType.None || item.Value.InsertionFluidContainer.LockedFluidType == FluidType);
+                float singlePipeFluidValue = FloatContainer.CurrentValue / FluidInsertionContainers.Count;
+                
+                foreach (KeyValuePair<ICell, IFluidInsertionTarget> pair in validInsertionContainersCount)
                 {
                     pair.Value.Add(singlePipeFluidValue);
                     FloatContainer.Remove(singlePipeFluidValue);
@@ -70,15 +74,15 @@ namespace Gameplay.Transportation.WaterPipeSystem
         public virtual void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int direction)
         {
             if (neighborCell.CellVisitor is IFluidExtractionSource fluidSource)
-                TryAddFluidSource(neighborCell, fluidSource.ExtractionFluidProvider);
+                TryAddFluidSource(neighborCell, fluidSource.ExtractionFluidContainer);
 
             if (neighborCell.CellVisitor is IFluidInsertionTarget fluidContainer)
-                TryAddFluidContainer(neighborCell, fluidContainer);
+                TryAddFluidInsertionContainer(neighborCell, fluidContainer);
 
             if (neighborCell.CellVisitor == null)
             {
                 TryRemoveFluidSource(neighborCell);
-                TryRemoveFluidContainer(neighborCell);
+                TryRemoveFluidInsertionContainer(neighborCell);
             }
         }
 
@@ -92,11 +96,11 @@ namespace Gameplay.Transportation.WaterPipeSystem
                     AddPipe(pipe);
                 }
 
-                foreach (var (cell, provider) in pipeSystem.FluidSources)
+                foreach (var (cell, provider) in pipeSystem.FluidExtractionContainers)
                     TryAddFluidSource(cell, provider);
 
-                foreach (var (cell, container) in pipeSystem.FluidBuildingContainers)
-                    TryAddFluidContainer(cell, container);
+                foreach (var (cell, container) in pipeSystem.FluidInsertionContainers)
+                    TryAddFluidInsertionContainer(cell, container);
 
                 FloatContainer.Add(pipeSystem.CurrentValue);
                 pipeSystem.Dispose();
@@ -115,11 +119,11 @@ namespace Gameplay.Transportation.WaterPipeSystem
                     AddPipe(pipe);
                 }
 
-                foreach (var (cell, provider) in pipeSystem.FluidSources)
+                foreach (var (cell, provider) in pipeSystem.FluidExtractionContainers)
                     TryAddFluidSource(cell, provider);
 
-                foreach (var (cell, container) in pipeSystem.FluidBuildingContainers)
-                    TryAddFluidContainer(cell, container);
+                foreach (var (cell, container) in pipeSystem.FluidInsertionContainers)
+                    TryAddFluidInsertionContainer(cell, container);
 
                 FloatContainer.Add(pipeSystem.CurrentValue);
                 pipeSystem.Dispose();
@@ -131,10 +135,10 @@ namespace Gameplay.Transportation.WaterPipeSystem
         public void Dispose()
         {
             _pipes = null;
-            FluidBuildingContainers = null;
-            foreach (var (_, provider) in FluidSources)
+            FluidInsertionContainers = null;
+            foreach (var (_, provider) in FluidExtractionContainers)
                 provider.OnAdded -= FluidProvider_OnValueChanged;
-            FluidSources = null;
+            FluidExtractionContainers = null;
         }
     }
 }

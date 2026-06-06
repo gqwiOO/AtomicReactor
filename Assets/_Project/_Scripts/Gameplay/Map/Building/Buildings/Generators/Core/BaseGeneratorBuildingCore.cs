@@ -10,25 +10,26 @@ namespace Gameplay.Map.Building.Generators
     public class BaseGeneratorBuildingCore : IBuildingCore
     {
         private readonly GeneratorBuildingSettingsData _generatorBuildingSettingsData;
-        public BuildingSidesData BuildingSidesData => _generatorBuildingSettingsData.BuildingSidesData;
         
-        public float Power => _generatorBuildingSettingsData.Power;
+        public float KwPower => _generatorBuildingSettingsData.KW_Power;
 
         public event Action<float> OnEnergyProduced;
         public IElectricityContainer ElectricityContainer { get; private set; }
 
         public BaseGeneratorBuildingCore(GeneratorBuildingSettingsData generatorBuildingSettingsData)
         {
-            ElectricityContainer = new ElectricityContainer(generatorBuildingSettingsData.Ah_BatteryCapacity);
+            ElectricityContainer = new ElectricityContainer(generatorBuildingSettingsData.KWH_BatteryCapacity);
             _generatorBuildingSettingsData = generatorBuildingSettingsData;
         }
         
         public virtual void Tick(float time)
         {
-            ElectricityContainer.Add(time * _generatorBuildingSettingsData.Power);
-            RaiseOnEnergyProduced(time * _generatorBuildingSettingsData.Power);
+            ElectricityContainer.Add(time * _generatorBuildingSettingsData.KW_Power);
+            RaiseOnEnergyProduced(time * _generatorBuildingSettingsData.KW_Power);
             Debugging.Log(this, $"Electricity : {ElectricityContainer.CurrentValue}A");
         }
+
+        public float ApplyEfficiency(float power) => power * _generatorBuildingSettingsData.Efficiency;
 
         protected void RaiseOnEnergyProduced(float value) => OnEnergyProduced?.Invoke(value);
 

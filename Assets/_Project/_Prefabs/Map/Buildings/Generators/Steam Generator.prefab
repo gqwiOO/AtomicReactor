@@ -144,4 +144,5 @@ MonoBehaviour:
   meshRenderer:
   - {fileID: 6939852439789138423}
   <BaseMaterial>k__BackingField: {fileID: 2100000, guid: 56b032c11a1d9ea44a0808b5f12027c0, type: 2}
-  <Key>k__BackingField: steam_electricity_generator_building
+  selectionOutline: {fileID: 0}
+  <Key>k__BackingField: steam_generator

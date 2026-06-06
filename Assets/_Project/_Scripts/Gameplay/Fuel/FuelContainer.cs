@@ -8,7 +8,7 @@ namespace Gameplay.Fuel
     public class FuelContainer
     {
         public SingleCellInventory ItemFuelContainer { get; }
-        public IFluidProvider FluidFuelProvider { get; }
+        public IFluidContainer FluidFuelContainer { get; }
         
         public float CurrentEnergy { get; private set; }
         
@@ -20,10 +20,10 @@ namespace Gameplay.Fuel
         {
             _acceptedFuels = acceptedFuels;
             ItemFuelContainer = new SingleCellInventory(itemFuelSlots);
-            FluidFuelProvider = new FluidProvider();
+            FluidFuelContainer = new FluidContainer();
         }
         
-        public bool IsEmpty() => ItemFuelContainer.Amount == 0 && FluidFuelProvider.CurrentValue <= 0f;
+        public bool IsEmpty() => ItemFuelContainer.Amount == 0 && FluidFuelContainer.CurrentValue <= 0f;
 
         public float ConsumeEnergy(float amount)
         {
@@ -59,15 +59,15 @@ namespace Gameplay.Fuel
         {
             if (_acceptedFuels == null) return;
 
-            float available = FluidFuelProvider.CurrentValue;
+            float available = FluidFuelContainer.CurrentValue;
             if (available <= 0f) return;
 
             foreach (var fuel in _acceptedFuels)
             {
                 if (fuel.SourceType == FuelSourceType.Item) continue;
-                if (fuel.FluidType != FluidFuelProvider.FluidType) continue;
+                if (fuel.FluidType != FluidFuelContainer.FluidType) continue;
 
-                FluidFuelProvider.ExtractFluid(available);
+                FluidFuelContainer.ExtractFluid(available);
                 CurrentEnergy += available * fuel.EnergyInJoules;
                 OnEnergyGained?.Invoke();
                 break;
