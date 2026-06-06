@@ -19,9 +19,9 @@ namespace Gameplay.Map.Building.Generators.HeatGenerator
 
         public SingleCellInventory ItemFuelContainer => _core.FuelContainer.ItemFuelContainer;
 
-        public IFloatContainer InsertionFloatContainer => _core.FuelContainer.FluidFuelProvider.FloatContainer;
-        public void Add(float value) => _core.FuelContainer.FluidFuelProvider.AddFluid(_activeFuelFluidType, value);
-        public void Remove(float value) => _core.FuelContainer.FluidFuelProvider.ExtractFluid(value);
+        public IFluidContainer InsertionFluidContainer => _core.FuelContainer.FluidFuelContainer;
+        public void Add(float value) => _core.FuelContainer.FluidFuelContainer.AddFluid(_activeFuelFluidType, value);
+        public void Remove(float value) => _core.FuelContainer.FluidFuelContainer.ExtractFluid(value);
 
         private FluidType _activeFuelFluidType;
 

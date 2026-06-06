@@ -13,7 +13,7 @@ namespace Gameplay.Map.Building.Fluids.Tanks
     {
         private IBuildingsSettingsProvider _buildingsSettingsProvider;
         private IFluidTankDataSettings _buildingSettings;
-        public IFloatContainer InsertionFloatContainer { get; private set; }
+        public IFluidContainer InsertionFluidContainer { get; private set; }
 
         [Inject]
         private void Construct(IBuildingsSettingsProvider buildingsSettingsProvider)
@@ -24,7 +24,7 @@ namespace Gameplay.Map.Building.Fluids.Tanks
         public override async UniTask Init(Vector2Int cellPosition)
         {
             _buildingSettings = base._buildingsSettingsProvider.GetBuildingSettings(Key) as IFluidTankDataSettings;
-            InsertionFloatContainer = new FloatContainer(_buildingSettings.MaxCapacity);
+            InsertionFluidContainer = new FluidContainer(FluidType.None, _buildingSettings.MaxCapacity);
             await base.Init(cellPosition);
         }
 
@@ -41,16 +41,16 @@ namespace Gameplay.Map.Building.Fluids.Tanks
 
     public interface IFluidInsertionTarget
     {
-        IFloatContainer InsertionFloatContainer { get; }
+        IFluidContainer InsertionFluidContainer { get; }
 
         void Add(float value)
         {
-            InsertionFloatContainer.Add(value);
+            InsertionFluidContainer.FloatContainer.Add(value);
         }
 
         void Remove(float value)
         {
-            InsertionFloatContainer.Remove(value);
+            InsertionFluidContainer.FloatContainer.Remove(value);
         }
     }
 }

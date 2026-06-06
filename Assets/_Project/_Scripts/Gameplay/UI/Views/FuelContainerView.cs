@@ -24,7 +24,7 @@ namespace Gameplay.UI.Views
             _fuelContainer = fuelContainer;
 
             _itemFuelView?.Init(fuelContainer.ItemFuelContainer);
-            _fluidFuelView?.Init(fuelContainer.FluidFuelProvider.FloatContainer);
+            _fluidFuelView?.Init(fuelContainer.FluidFuelContainer.FloatContainer);
 
             if (_energySlider != null)
             {

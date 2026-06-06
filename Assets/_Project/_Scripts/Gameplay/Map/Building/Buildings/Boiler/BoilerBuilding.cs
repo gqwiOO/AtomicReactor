@@ -12,11 +12,11 @@ namespace Gameplay.Map.Building.Boiler
     {
         private BoilerCore _core;
 
-        public IFloatContainer WaterContainer => _core.WaterContainer; 
-        public IFluidProvider SteamContainer => _core.SteamContainer; 
+        public IFloatContainer WaterContainer => _core.WaterContainer.FloatContainer; 
+        public IFluidContainer SteamContainer => _core.SteamContainer; 
         public FuelContainer FuelContainer => _core.FuelContainer; 
-        public IFluidProvider ExtractionFluidProvider => _core.SteamContainer;
-        public IFloatContainer InsertionFloatContainer => _core.WaterContainer;
+        public IFluidContainer ExtractionFluidContainer => _core.SteamContainer;
+        public IFluidContainer InsertionFluidContainer => _core.WaterContainer;
         public override async UniTask Init(Vector2Int cellPosition)
         {
             BoilerBuildingSettingsDataAsset settings = _buildingsSettingsProvider.GetBuildingSettings(Key) as BoilerBuildingSettingsDataAsset;

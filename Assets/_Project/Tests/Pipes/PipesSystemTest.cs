@@ -27,8 +27,8 @@ namespace Horror.Tests.Pipes
 
         private class FakeFluidSource : ICellVisitor, IFluidExtractionSource
         {
-            public IFluidProvider ExtractionFluidProvider { get; }
-            public FakeFluidSource(IFluidProvider provider) => ExtractionFluidProvider = provider;
+            public IFluidContainer ExtractionFluidContainer { get; }
+            public FakeFluidSource(IFluidContainer provider) => ExtractionFluidContainer = provider;
             public void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int side) { }
             public event Action OnUpdated;
         }
@@ -37,7 +37,7 @@ namespace Horror.Tests.Pipes
         public IEnumerator PipesDividingtest()
         {
             PipeSystem PipeSystem = new FluidPipeSystem();
-            IFluidProvider fluidProvider = new FluidProvider();
+            IFluidContainer fluidProvider = new FluidContainer();
             var fakeCell = new FakeCell();
             fakeCell.SetVisitor(new FakeFluidSource(fluidProvider));
             PipeSystem.NotifyAboutNeighborUpdated(fakeCell, Vector2Int.zero);

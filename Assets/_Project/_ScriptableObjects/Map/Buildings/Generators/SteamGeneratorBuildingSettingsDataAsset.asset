@@ -30,10 +30,12 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 0}
   <BuildingCost>k__BackingField: []
   <GeneratorBuildingSettingsData>k__BackingField:
-    Key: 
+    Key: steam_generator
     Name: 
     Efficiency: 0.8
     Power: 0
     Ah_BatteryCapacity: 0
     BuildingSidesData:
       AllowedTypes: 
+    SteamContainerCapacity: 50
+    Capacity: 0

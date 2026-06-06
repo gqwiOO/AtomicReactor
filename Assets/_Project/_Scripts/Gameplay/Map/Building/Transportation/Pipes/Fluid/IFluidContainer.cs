@@ -2,18 +2,19 @@
 
 namespace Gameplay.Transportation.WaterPipeSystem
 {
-    public interface IFluidProvider
+    public interface IFluidContainer
     {
         FluidType FluidType { get; }
         float CurrentValue { get; }
         IFloatContainer FloatContainer { get; }
+        FluidType LockedFluidType { get; } 
         void ExtractFluid(float amount);
         void AddFluid(FluidType fluidType,float amount);
 
-        event Action<FluidProvider> OnAdded;
+        event Action<FluidContainer> OnAdded;
     }
 
-    public class FluidProvider : IFluidProvider
+    public class FluidContainer : IFluidContainer
     {
         public FluidType FluidType { get; private set; } = FluidType.None;
         public float CurrentValue => _floatContainer.CurrentValue;
@@ -21,11 +22,11 @@ namespace Gameplay.Transportation.WaterPipeSystem
         private FloatContainer _floatContainer;
         public IFloatContainer FloatContainer => _floatContainer;
 
-        private FluidType _lockedFluidType; 
+        public FluidType LockedFluidType { get; private set; } 
 
-        public FluidProvider(FluidType lockFluidType = FluidType.None, float capacity = 0)
+        public FluidContainer(FluidType lockFluidType = FluidType.None, float capacity = 0)
         {
-            _lockedFluidType = lockFluidType;
+            LockedFluidType = lockFluidType;
             _floatContainer = new FloatContainer(capacity);
         }
         public void ExtractFluid(float amount)
@@ -38,7 +39,7 @@ namespace Gameplay.Transportation.WaterPipeSystem
             if (FluidType != fluidType && FluidType != FluidType.None)
                 return;
 
-            if (_lockedFluidType != fluidType)
+            if (LockedFluidType != fluidType)
                 return;
             
             FluidType = fluidType;
@@ -46,11 +47,11 @@ namespace Gameplay.Transportation.WaterPipeSystem
             OnAdded?.Invoke(this);
         }
 
-        public event Action<FluidProvider> OnAdded;
+        public event Action<FluidContainer> OnAdded;
     }
 
     public interface IFluidExtractionSource
     {
-        IFluidProvider ExtractionFluidProvider { get; }
+        IFluidContainer ExtractionFluidContainer { get; }
     }
 }

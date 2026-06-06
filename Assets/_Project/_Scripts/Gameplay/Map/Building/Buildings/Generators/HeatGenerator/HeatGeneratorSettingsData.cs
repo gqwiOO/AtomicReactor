@@ -28,6 +28,8 @@ namespace Gameplay.Map.Building.Generators.HeatGenerator
     [Serializable]
     public class SteamGeneratorSettingsData : GeneratorBuildingSettingsData
     {
+        public int SteamContainerCapacity;
+        public int Capacity;
     }
     
     [Serializable]

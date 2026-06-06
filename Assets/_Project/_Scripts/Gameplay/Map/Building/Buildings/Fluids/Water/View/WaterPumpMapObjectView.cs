@@ -16,7 +16,7 @@ namespace Gameplay.Map.Building.Fluids.View
 
         private void SpecificInit(WaterPumpMapObject waterPumpMapObject)
         {
-            floatContainerView.Init(waterPumpMapObject.ExtractionFluidProvider.FloatContainer);
+            floatContainerView.Init(waterPumpMapObject.ExtractionFluidContainer.FloatContainer);
         }
     }
 }

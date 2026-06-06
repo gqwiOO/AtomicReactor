@@ -1,20 +1,22 @@
-﻿using Gameplay.Inventories;
+﻿using Gameplay.Map.Building.Generators.HeatGenerator;
+using Gameplay.Transportation.WaterPipeSystem;
 
 namespace Gameplay.Map.Building.Generators.Core
 {
     public class SteamElectricityGeneratorBuildingCore : BaseGeneratorBuildingCore
     {
-        public SingleCellInventory _itemContainer;
+        public FluidContainer SteamContainer { get; private set; }
 
         public SteamElectricityGeneratorBuildingCore(GeneratorBuildingSettingsData generatorBuildingSettingsData) : base(generatorBuildingSettingsData)
         {
-            _itemContainer = new SingleCellInventory();
+            SteamGeneratorSettingsData steamGeneratorSettingsData =
+                generatorBuildingSettingsData as SteamGeneratorSettingsData;
+            SteamContainer = new FluidContainer(FluidType.Steam, steamGeneratorSettingsData.SteamContainerCapacity);
         }
 
         public override void Tick(float time)
         {
-            if(true)
-                base.Tick(time);
+            base.Tick(time);
         }
     }
 }

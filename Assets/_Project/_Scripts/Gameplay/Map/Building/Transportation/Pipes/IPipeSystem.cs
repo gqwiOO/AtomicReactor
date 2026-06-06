@@ -10,12 +10,12 @@ namespace Gameplay.Transportation.WaterPipeSystem
     {
         public int Key { get; }
 
-        Dictionary<ICell, IFluidProvider> FluidSources { get; }
+        Dictionary<ICell, IFluidContainer> FluidExtractionContainers { get; }
         IEnumerable<IPipe> Pipes { get; }
 
         IFloatContainer FloatContainer { get; }
 
-        Dictionary<ICell, IFluidInsertionTarget> FluidBuildingContainers { get;}
+        Dictionary<ICell, IFluidInsertionTarget> FluidInsertionContainers { get;}
         float CurrentValue { get; }
 
         void AddPipe(IPipe pipe);
