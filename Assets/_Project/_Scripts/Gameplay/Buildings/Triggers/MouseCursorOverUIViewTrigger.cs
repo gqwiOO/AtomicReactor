@@ -1,6 +1,7 @@
 ﻿using Gameplay.Map.Building;
 using Gameplay.MapUI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Zenject;
 
 namespace Gameplay.Buildings.Triggers
@@ -23,11 +24,17 @@ namespace Gameplay.Buildings.Triggers
 
         private void OnMouseEnter()
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+            
             _mapUIHandler.ShowMapBuildingView(_buildingMapObject);
         }
 
         private void OnMouseExit()
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+            
             _mapUIHandler.HideMapBuildingView(_buildingMapObject);
         }
     }

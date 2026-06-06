@@ -1,11 +1,14 @@
 ﻿using System;
 using Gameplay.Map.Cell;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Gameplay.Control
 {
     public class CellsRaycaster : MonoBehaviour, ICellMapListener
     {
+        private const string MAP_LAYER = "Map";
+        
         [SerializeField] private Camera mainCamera;
 
         private CellComponent _previousSelectedCell;
@@ -21,7 +24,9 @@ namespace Gameplay.Control
         private void RaycastToMouse()
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            // bool throughUI = Physics.Raycast(ray, out RaycastHit uiHit, 1000, 1 << LayerMask.NameToLayer("UI"));
+            // if(throughUI) return;
+            if (Physics.Raycast(ray, out RaycastHit hit, 1000, 1 << LayerMask.NameToLayer(MAP_LAYER) ))
             {
                 CellComponent cell = hit.collider.GetComponentInParent<CellComponent>();
                 if (cell != null)
