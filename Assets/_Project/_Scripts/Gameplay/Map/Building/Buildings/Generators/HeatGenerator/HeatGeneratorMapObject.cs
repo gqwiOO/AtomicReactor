@@ -10,19 +10,18 @@ using UnityEngine;
 
 namespace Gameplay.Map.Building.Generators.HeatGenerator
 {
-    public class HeatGeneratorMapObject : BaseElectricityGeneratorMapObject, IFluidBuildingContainer, IItemInsertionTarget
+    public class HeatGeneratorMapObject : BaseElectricityGeneratorMapObject, IFluidInsertionTarget, IItemInsertionTarget
     {
         private HeatGeneratorBuildingCore _core;
 
         public override IElectricityProvider ElectricityProvider { get; protected set; }
         public override float Power => _core.Power;
 
-        public SingleCellInventory ItemFuelContainer => _core.ItemFuelContainer;
+        public SingleCellInventory ItemFuelContainer => _core.FuelContainer.ItemFuelContainer;
 
-        // IFluidBuildingContainer — exposes the internal fluid fuel tank to the pipe system
-        public IFloatContainer FloatContainer => _core.FluidFuelProvider.FloatContainer;
-        public void Add(float value) => _core.FluidFuelProvider.AddFluid(_activeFuelFluidType, value);
-        public void Remove(float value) => _core.FluidFuelProvider.ExtractFluid(value);
+        public IFloatContainer InsertionFloatContainer => _core.FuelContainer.FluidFuelProvider.FloatContainer;
+        public void Add(float value) => _core.FuelContainer.FluidFuelProvider.AddFluid(_activeFuelFluidType, value);
+        public void Remove(float value) => _core.FuelContainer.FluidFuelProvider.ExtractFluid(value);
 
         private FluidType _activeFuelFluidType;
 
@@ -40,10 +39,10 @@ namespace Gameplay.Map.Building.Generators.HeatGenerator
         public override void Tick() => _core.Tick(Time.deltaTime);
 
         public bool CanInsertFromPipe(int itemId, int amount = 1) =>
-            _core != null && _core.CanAddItemFuel(itemId, amount);
+            _core != null && _core.FuelContainer.CanAddItemFuel(itemId, amount);
 
         public void InsertFromPipe(int itemId, int amount) =>
-            _core.ItemFuelContainer.Add(itemId, amount);
+            _core.FuelContainer.ItemFuelContainer.Add(itemId, amount);
 
         public override void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int direction)
         {

@@ -9,11 +9,11 @@ using Zenject;
 
 namespace Gameplay.Map.Building.Fluids.Tanks
 {
-    public class FluidTankMapObject: BuildingMapObject, IFluidBuildingContainer
+    public class FluidTankMapObject: BuildingMapObject, IFluidInsertionTarget
     {
         private IBuildingsSettingsProvider _buildingsSettingsProvider;
         private IFluidTankDataSettings _buildingSettings;
-        public IFloatContainer FloatContainer { get; private set; }
+        public IFloatContainer InsertionFloatContainer { get; private set; }
 
         [Inject]
         private void Construct(IBuildingsSettingsProvider buildingsSettingsProvider)
@@ -24,7 +24,7 @@ namespace Gameplay.Map.Building.Fluids.Tanks
         public override async UniTask Init(Vector2Int cellPosition)
         {
             _buildingSettings = base._buildingsSettingsProvider.GetBuildingSettings(Key) as IFluidTankDataSettings;
-            FloatContainer = new FloatContainer(_buildingSettings.MaxCapacity);
+            InsertionFloatContainer = new FloatContainer(_buildingSettings.MaxCapacity);
             await base.Init(cellPosition);
         }
 
@@ -39,18 +39,18 @@ namespace Gameplay.Map.Building.Fluids.Tanks
         }
     }
 
-    public interface IFluidBuildingContainer
+    public interface IFluidInsertionTarget
     {
-        IFloatContainer FloatContainer { get; }
+        IFloatContainer InsertionFloatContainer { get; }
 
         void Add(float value)
         {
-            FloatContainer.Add(value);
+            InsertionFloatContainer.Add(value);
         }
 
         void Remove(float value)
         {
-            FloatContainer.Remove(value);
+            InsertionFloatContainer.Remove(value);
         }
     }
 }

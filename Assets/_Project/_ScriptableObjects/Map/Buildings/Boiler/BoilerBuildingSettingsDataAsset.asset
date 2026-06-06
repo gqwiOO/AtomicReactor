@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85fe3baa1c514c9483cc8c0e41972c9a, type: 3}
+  m_Name: BoilerBuildingSettingsDataAsset
+  m_EditorClassIdentifier: GameAssembly::Gameplay.Map.Building.Boiler.BoilerBuildingSettingsDataAsset
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  <BuildingMapObject>k__BackingField: {fileID: -8476430701708661312, guid: d45feaca6785b77478790108c45270e3, type: 3}
+  <Name>k__BackingField: Boiler
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField: []
+    <MultiplyPlacing>k__BackingField: 0
+  <Price>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 0}
+  <BuildingCost>k__BackingField: []
+  requiredHeatPerWaterUnit: 50
+  requiredWaterPerSteamUnit: 10
+  <BuildingSidesData>k__BackingField:
+    AllowedTypes: 
+  <AcceptedFuels>k__BackingField:
+  - {fileID: 11400000, guid: a890f541efbc0074faf02863d81a0696, type: 2}
+  <FuelCapacity>k__BackingField: 1000
+  <WaterCapacity>k__BackingField: 1000
+  <SteamCapacity>k__BackingField: 1000
