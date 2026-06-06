@@ -25,7 +25,7 @@ namespace Gameplay.UI.Tabs
                 tab.Button.OnClicked += Button_OnClicked;
         }
 
-        private void OnEnable()
+        private void Start()
         {
             _currentTab = null;
             if (_tabs.Count > 0)
