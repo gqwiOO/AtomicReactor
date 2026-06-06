@@ -21,9 +21,12 @@ namespace Gameplay.Transportation.WaterPipeSystem
         private FloatContainer _floatContainer;
         public IFloatContainer FloatContainer => _floatContainer;
 
-        public FluidProvider()
+        private FluidType _lockedFluidType; 
+
+        public FluidProvider(FluidType lockFluidType = FluidType.None, float capacity = 0)
         {
-            _floatContainer = new FloatContainer();
+            _lockedFluidType = lockFluidType;
+            _floatContainer = new FloatContainer(capacity);
         }
         public void ExtractFluid(float amount)
         {
@@ -34,6 +37,9 @@ namespace Gameplay.Transportation.WaterPipeSystem
         {
             if (FluidType != fluidType && FluidType != FluidType.None)
                 return;
+
+            if (_lockedFluidType != fluidType)
+                return;
             
             FluidType = fluidType;
             _floatContainer.Add(amount);
@@ -41,5 +47,10 @@ namespace Gameplay.Transportation.WaterPipeSystem
         }
 
         public event Action<FluidProvider> OnAdded;
+    }
+
+    public interface IFluidExtractionSource
+    {
+        IFluidProvider ExtractionFluidProvider { get; }
     }
 }

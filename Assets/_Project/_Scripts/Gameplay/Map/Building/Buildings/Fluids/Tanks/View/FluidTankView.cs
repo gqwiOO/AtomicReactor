@@ -11,12 +11,12 @@ namespace Gameplay.Map.Building.Fluids.Tanks.View
         
         public override void Init(BuildingMapObject buildingMapObject)
         {
-            SpecificInit(buildingMapObject as IFluidBuildingContainer);
+            SpecificInit(buildingMapObject as IFluidInsertionTarget);
         }
 
-        private void SpecificInit(IFluidBuildingContainer fluidBuildingContainer)
+        private void SpecificInit(IFluidInsertionTarget fluidBuildingContainer)
         {
-            floatContainerView.Init(fluidBuildingContainer.FloatContainer);
+            floatContainerView.Init(fluidBuildingContainer.InsertionFloatContainer);
         }
     }
 }

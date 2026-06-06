@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Gameplay.Map.Building.Fluids;
+using System.Collections.Generic;
 using Gameplay.Map.Building.Fluids.Tanks;
 using Gameplay.Map.Cell;
 using UnityEngine;
@@ -13,54 +11,52 @@ namespace Gameplay.Transportation.WaterPipeSystem
         public IFloatContainer FloatContainer { get; private set; }
 
         public int Key { get; private set; }
-        public List<IFluidProvider> FluidProviders { get; set; }
-        
-        public Dictionary<ICell, IFluidBuildingContainer> FluidBuildingContainers { get; set; }
+        public Dictionary<ICell, IFluidProvider> FluidSources { get; private set; }
+        public Dictionary<ICell, IFluidInsertionTarget> FluidBuildingContainers { get; set; }
         public IEnumerable<IPipe> Pipes => _pipes;
         public FluidType FluidType { get; set; } = FluidType.None;
         public float CurrentValue => FloatContainer.CurrentValue;
 
         public PipeSystem()
         {
-            FloatContainer = new  FloatContainer();
-            FluidProviders = new  List<IFluidProvider>();
-            FluidBuildingContainers = new  Dictionary<ICell, IFluidBuildingContainer>();
+            FloatContainer = new FloatContainer();
+            FluidSources = new Dictionary<ICell, IFluidProvider>();
+            FluidBuildingContainers = new Dictionary<ICell, IFluidInsertionTarget>();
             Key = GetHashCode();
         }
-        
-        public void AddFluidProvider(IFluidProvider fluidProvider)
+
+        private void TryAddFluidSource(ICell cell, IFluidProvider provider)
         {
-            FluidProviders.Add(fluidProvider);
-            fluidProvider.OnAdded += FluidProvider_OnValueChanged;
-        }
-        
-        private void UpdateFluidContainer(ICell cell, IFluidBuildingContainer fluidContainer)
-        {
-            if (fluidContainer == null)
-                TryRemoveFluidContainer(cell,null);
-            else
-                TryAddFluidContainer(cell,fluidContainer);
+            if (FluidSources.TryAdd(cell, provider))
+                provider.OnAdded += FluidProvider_OnValueChanged;
         }
 
-        private void TryAddFluidContainer(ICell cell, IFluidBuildingContainer fluidContainer) 
+        private void TryRemoveFluidSource(ICell cell)
+        {
+            if (FluidSources.Remove(cell, out var provider))
+                provider.OnAdded -= FluidProvider_OnValueChanged;
+        }
+
+        private void TryAddFluidContainer(ICell cell, IFluidInsertionTarget fluidContainer)
             => FluidBuildingContainers.TryAdd(cell, fluidContainer);
-        private void TryRemoveFluidContainer(ICell cell, IFluidBuildingContainer fluidContainer) 
+
+        private void TryRemoveFluidContainer(ICell cell)
             => FluidBuildingContainers.Remove(cell);
 
         private void FluidProvider_OnValueChanged(FluidProvider fluidProvider)
         {
-            if(FluidType != fluidProvider.FluidType && FluidType != FluidType.None)
+            if (FluidType != fluidProvider.FluidType && FluidType != FluidType.None)
                 return;
             FluidType = fluidProvider.FluidType;
-            
+
             FloatContainer.Add(fluidProvider.CurrentValue);
             fluidProvider.ExtractFluid(fluidProvider.CurrentValue);
             if (FloatContainer.CurrentValue > 0 && FluidBuildingContainers.Count > 0)
             {
                 float singlePipeFluidValue = FloatContainer.CurrentValue / FluidBuildingContainers.Count;
-                foreach (KeyValuePair<ICell, IFluidBuildingContainer> fluidContainersPair in FluidBuildingContainers)
+                foreach (KeyValuePair<ICell, IFluidInsertionTarget> pair in FluidBuildingContainers)
                 {
-                    fluidContainersPair.Value.Add(singlePipeFluidValue);
+                    pair.Value.Add(singlePipeFluidValue);
                     FloatContainer.Remove(singlePipeFluidValue);
                 }
             }
@@ -73,25 +69,19 @@ namespace Gameplay.Transportation.WaterPipeSystem
 
         public virtual void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int direction)
         {
-            if (neighborCell.CellVisitor is WaterPumpMapObject waterPump)
-            {
-                AddFluidProvider(waterPump.FluidProvider);
-                return;
-            }
+            if (neighborCell.CellVisitor is IFluidExtractionSource fluidSource)
+                TryAddFluidSource(neighborCell, fluidSource.ExtractionFluidProvider);
 
-            if (neighborCell.CellVisitor is IFluidBuildingContainer fluidBuildingContainer)
-            {
-                UpdateFluidContainer(neighborCell,fluidBuildingContainer);
-                return;
+            if (neighborCell.CellVisitor is IFluidInsertionTarget fluidContainer)
+                TryAddFluidContainer(neighborCell, fluidContainer);
 
+            if (neighborCell.CellVisitor == null)
+            {
+                TryRemoveFluidSource(neighborCell);
+                TryRemoveFluidContainer(neighborCell);
             }
-            // if (neighborCell.CellVisitor == null)
-            // {
-                // IFluidBuildingContainer fluidContainer = neighborCell.CellVisitor as IFluidBuildingContainer;
-                // UpdateFluidContainer(neighborCell,fluidContainer);
-            // }
         }
-        
+
         public IPipeSystem CollapseSystems(params IPipeSystem[] pipes)
         {
             foreach (IPipeSystem pipeSystem in pipes)
@@ -102,22 +92,19 @@ namespace Gameplay.Transportation.WaterPipeSystem
                     AddPipe(pipe);
                 }
 
-                foreach (IFluidProvider fluidProvider in pipeSystem.FluidProviders)
-                {
-                    AddFluidProvider(fluidProvider);
-                }
-                
-                foreach (var (cell, fluidBuildingContainer) in FluidBuildingContainers)
-                {
-                    TryAddFluidContainer(cell,fluidBuildingContainer);
-                }
+                foreach (var (cell, provider) in pipeSystem.FluidSources)
+                    TryAddFluidSource(cell, provider);
+
+                foreach (var (cell, container) in pipeSystem.FluidBuildingContainers)
+                    TryAddFluidContainer(cell, container);
+
                 FloatContainer.Add(pipeSystem.CurrentValue);
-                
                 pipeSystem.Dispose();
             }
 
             return this;
         }
+
         public IPipeSystem CollapseSystems(List<IPipeSystem> pipes)
         {
             foreach (IPipeSystem pipeSystem in pipes)
@@ -128,16 +115,12 @@ namespace Gameplay.Transportation.WaterPipeSystem
                     AddPipe(pipe);
                 }
 
-                foreach (IFluidProvider fluidProvider in pipeSystem.FluidProviders)
-                {
-                    AddFluidProvider(fluidProvider);
-                    
-                }
-                
-                foreach (var (cell, fluidBuildingContainer) in FluidBuildingContainers)
-                {
-                    TryAddFluidContainer(cell,fluidBuildingContainer);
-                }
+                foreach (var (cell, provider) in pipeSystem.FluidSources)
+                    TryAddFluidSource(cell, provider);
+
+                foreach (var (cell, container) in pipeSystem.FluidBuildingContainers)
+                    TryAddFluidContainer(cell, container);
+
                 FloatContainer.Add(pipeSystem.CurrentValue);
                 pipeSystem.Dispose();
             }
@@ -149,11 +132,9 @@ namespace Gameplay.Transportation.WaterPipeSystem
         {
             _pipes = null;
             FluidBuildingContainers = null;
-            foreach (IFluidProvider fluidProvider in FluidProviders)
-            {
-                fluidProvider.OnAdded -= FluidProvider_OnValueChanged;
-            }
-            FluidProviders = null;
+            foreach (var (_, provider) in FluidSources)
+                provider.OnAdded -= FluidProvider_OnValueChanged;
+            FluidSources = null;
         }
     }
 }

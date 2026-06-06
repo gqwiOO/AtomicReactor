@@ -9,11 +9,13 @@ using Zenject;
 
 namespace Gameplay.Map.Building.Fluids
 {
-    public class WaterPumpMapObject: BuildingMapObject
+    
+    //todo: remove extractionfluidProvider and keep water in self container 
+    public class WaterPumpMapObject: BuildingMapObject, IFluidExtractionSource
     {
         private IMapCellsService _mapCellsService;
         
-        public IFluidProvider FluidProvider { get; private set; }
+        public IFluidProvider ExtractionFluidProvider { get; private set; }
 
         [Inject]
         private void Construct(IMapCellsService mapCellsService)
@@ -23,7 +25,7 @@ namespace Gameplay.Map.Building.Fluids
         
         public override async UniTask Init(Vector2Int cellPosition)
         {
-            FluidProvider = new FluidProvider();
+            ExtractionFluidProvider = new FluidProvider(FluidType.Water, 1000);
             await base.Init(cellPosition);
             InitRotation();
 
@@ -49,7 +51,7 @@ namespace Gameplay.Map.Building.Fluids
 
         public override void Tick()
         {
-            FluidProvider.AddFluid(FluidType.Water, 1 * Time.deltaTime);
+            ExtractionFluidProvider.AddFluid(FluidType.Water, 1 * Time.deltaTime);
         }
 
         public override void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int direction)
