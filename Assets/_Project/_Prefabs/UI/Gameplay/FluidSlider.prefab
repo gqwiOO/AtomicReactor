@@ -222,9 +222,9 @@ GameObject:
   m_Component:
   - component: {fileID: 81998529274704243}
   - component: {fileID: 3841784632181914976}
-  - component: {fileID: 3130213688481985207}
+  - component: {fileID: 5757518185793275426}
   m_Layer: 5
-  m_Name: WaterSlider
+  m_Name: FluidSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3130213688481985207
+--- !u!114 &5757518185793275426
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -312,11 +312,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5022975414431720883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62bd04e53e2042ef8d80e0f83337e26a, type: 3}
+  m_Script: {fileID: 11500000, guid: ec18d1780b97b544da84ffe5a975439f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: GameAssembly::Gameplay.UI.Views.FloatContainerView
-  textField: {fileID: 0}
+  m_EditorClassIdentifier: GameAssembly::Gameplay.UI.Views.FluidContainerView
+  textField: {fileID: 5450371839109056974}
   slider: {fileID: 3841784632181914976}
+  colorImage: {fileID: 5619991446260996458}
 --- !u!1 &7961534217444706146
 GameObject:
   m_ObjectHideFlags: 0

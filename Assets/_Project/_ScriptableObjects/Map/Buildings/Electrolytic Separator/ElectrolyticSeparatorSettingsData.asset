@@ -37,7 +37,7 @@ MonoBehaviour:
     - FluidType: 3
       M3_Amount: 0.5
     KW_PowerPerM3Input: 20
-    H_SpeedPerM3Input: 0.5
+    H_SpeedPerM3Input: 60
   <M3_InputContainerCapacity>k__BackingField: 1000
   <M3_Output1ContainerCapacity>k__BackingField: 500
   <M3_Output2ContainerCapacity>k__BackingField: 500

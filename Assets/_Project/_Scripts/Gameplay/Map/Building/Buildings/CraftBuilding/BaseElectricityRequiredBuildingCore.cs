@@ -10,6 +10,11 @@ namespace Gameplay.Map.Building.CraftBuilding
     {
         public IElectricityContainer ElectricityContainer { get; protected set; }
 
+        protected BaseElectricityRequiredBuildingCore(float maxElectricityCapacity)
+        {
+            ElectricityContainer = new ElectricityContainer(maxElectricityCapacity);
+        }
+        
         protected BaseElectricityRequiredBuildingCore()
         {
             ElectricityContainer = new ElectricityContainer();

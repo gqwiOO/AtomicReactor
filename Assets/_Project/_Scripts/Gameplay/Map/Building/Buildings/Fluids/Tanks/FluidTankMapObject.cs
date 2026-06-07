@@ -43,9 +43,9 @@ namespace Gameplay.Map.Building.Fluids.Tanks
     {
         IFluidContainer InsertionFluidContainer { get; }
 
-        void Add(float value)
+        void Add(FluidType fluidType, float value)
         {
-            InsertionFluidContainer.FloatContainer.Add(value);
+            InsertionFluidContainer.AddFluid(fluidType, value);
         }
 
         void Remove(float value)

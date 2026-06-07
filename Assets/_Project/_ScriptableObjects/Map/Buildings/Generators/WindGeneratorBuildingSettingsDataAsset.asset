@@ -30,10 +30,6 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 0}
   <BuildingCost>k__BackingField: []
   <GeneratorBuildingSettingsData>k__BackingField:
-    Key: wind_generator
-    Name: Wind Generator
     Efficiency: 0.8
-    Power: 10
-    Ah_BatteryCapacity: 1000
-    BuildingSidesData:
-      AllowedTypes: 
+    KW_Power: 100
+    KWH_BatteryCapacity: 0

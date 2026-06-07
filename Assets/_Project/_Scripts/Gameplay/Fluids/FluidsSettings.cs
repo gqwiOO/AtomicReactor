@@ -18,7 +18,7 @@ namespace Gameplay.Transportation.WaterPipeSystem
 
         public static FluidData GetFluid(FluidType type)
         {
-            return _fluidsSettings.First(f => f.Name == type.ToString());
+            return _fluidsSettings.First(f => f.FluidType == type);
         }
         
         public static Color GetFluidColor(FluidType type)

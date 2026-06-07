@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a88c5321d54b359c88c436a27af650, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: GameAssembly::Gameplay.Transportation.WaterPipeSystem.FluidData
+  FluidType: 1
   <Name>k__BackingField: Water
   <Color>k__BackingField: {r: 0.25471687, g: 0.7897969, b: 1, a: 1}

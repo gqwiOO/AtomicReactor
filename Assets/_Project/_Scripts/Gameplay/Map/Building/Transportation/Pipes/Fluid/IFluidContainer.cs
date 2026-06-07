@@ -39,7 +39,7 @@ namespace Gameplay.Transportation.WaterPipeSystem
             if (FluidType != fluidType && FluidType != FluidType.None)
                 return;
 
-            if (LockedFluidType != fluidType)
+            if (LockedFluidType != fluidType && LockedFluidType != FluidType.None)
                 return;
             
             FluidType = fluidType;

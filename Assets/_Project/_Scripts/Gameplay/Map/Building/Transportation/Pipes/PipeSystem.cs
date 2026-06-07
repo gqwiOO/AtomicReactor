@@ -60,7 +60,7 @@ namespace Gameplay.Transportation.WaterPipeSystem
                 
                 foreach (KeyValuePair<ICell, IFluidInsertionTarget> pair in validInsertionContainersCount)
                 {
-                    pair.Value.Add(singlePipeFluidValue);
+                    pair.Value.Add(fluidProvider.FluidType, singlePipeFluidValue);
                     FloatContainer.Remove(singlePipeFluidValue);
                 }
             }

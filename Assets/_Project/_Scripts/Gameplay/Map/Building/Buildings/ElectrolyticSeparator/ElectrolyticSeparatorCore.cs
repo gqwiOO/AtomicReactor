@@ -13,7 +13,7 @@ namespace Gameplay.Map.Building.ElectrolyticSeparator
 
         private List<ElectrolyticSeparation> _possibleSeparations;
 
-        public ElectrolyticSeparatorCore(ElectrolyticSeparatorSettingsData electrolyticSeparatorSettingsData)
+        public ElectrolyticSeparatorCore(ElectrolyticSeparatorSettingsData electrolyticSeparatorSettingsData): base(electrolyticSeparatorSettingsData.KW_ElectricityCapacity)
         {
             _electrolyticSeparatorSettingsData = electrolyticSeparatorSettingsData;
             _possibleSeparations = electrolyticSeparatorSettingsData.Separations;
