@@ -20,15 +20,4 @@ namespace Gameplay.Transportation.WaterPipeSystem
         void RotateTowardDirection(Vector4 neighboursStates);
         void NotifyToChangeRotationState();
     }
-
-    public enum FluidType
-    {
-        None = 0,
-        Water = 1,
-        Oil = 2,
-        Gasoline = 3,
-        RadioactiveFluid = 4,
-        Steam = 5,
-        NaturalGas = 6,
-    }
 }

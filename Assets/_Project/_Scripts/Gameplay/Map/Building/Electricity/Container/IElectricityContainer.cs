@@ -1,7 +1,4 @@
 ﻿using System;
-using Core.Scripts.Debugging;
-using JetBrains.Annotations;
-using UnityEditor.Build.Content;
 
 namespace Gameplay.Map.Building.Electricity
 {
