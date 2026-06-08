@@ -45,6 +45,12 @@ namespace Gameplay.UI.Tabs
         private void Button_OnClicked()
         {
             OnClicked?.Invoke(this);
+            HandleClick();
+        }
+
+        protected virtual void HandleClick()
+        {
+            
         }
     }
 }
