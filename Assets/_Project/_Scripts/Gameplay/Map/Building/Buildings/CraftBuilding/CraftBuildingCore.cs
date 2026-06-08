@@ -85,10 +85,10 @@ namespace Gameplay.Map.Building.CraftBuilding
         {
             if (cell.CellVisitor is ChestBuilding chestBuilding)
             {
-                if (BuildingSidesData.GetSide(direction) == SideType.Input)
-                {
-                    SetInputContainer(chestBuilding.InventoryBuildingCore.Inventory);
-                }
+                // if (BuildingSidesData.GetSide(direction) == SideType.Input)
+                // {
+                    // SetInputContainer(chestBuilding.InventoryBuildingCore.Inventory);
+                // }
             }
         }
 

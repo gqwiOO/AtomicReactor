@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5974714489911135050}
   - component: {fileID: 3487371191145447773}
-  - component: {fileID: 1861572582341376013}
+  - component: {fileID: 4468316382196158288}
   m_Layer: 5
   m_Name: SteamSlider
   m_TagString: Untagged
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1861572582341376013
+--- !u!114 &4468316382196158288
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,11 +100,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 93599831045966930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62bd04e53e2042ef8d80e0f83337e26a, type: 3}
+  m_Script: {fileID: 11500000, guid: ec18d1780b97b544da84ffe5a975439f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: GameAssembly::Gameplay.UI.Views.FloatContainerView
-  textField: {fileID: 0}
+  m_EditorClassIdentifier: GameAssembly::Gameplay.UI.Views.FluidContainerView
+  textField: {fileID: 9215564099701796678}
   slider: {fileID: 3487371191145447773}
+  colorImage: {fileID: 4179266277184664212}
 --- !u!1 &1433368477505117953
 GameObject:
   m_ObjectHideFlags: 0

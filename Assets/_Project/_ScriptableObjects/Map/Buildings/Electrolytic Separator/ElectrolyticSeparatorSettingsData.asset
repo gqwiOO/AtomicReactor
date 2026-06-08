@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7dc1bb33704f7894fb54dabe452d25, type: 3}
+  m_Name: ElectrolyticSeparatorSettingsData
+  m_EditorClassIdentifier: GameAssembly::Gameplay.Map.Building.ElectrolyticSeparator.ElectrolyticSeparatorSettingsData
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  <BuildingMapObject>k__BackingField: {fileID: -6694163345693023997, guid: f84c258f2555b6347bac5a9d00a2e558, type: 3}
+  <Name>k__BackingField: Electrolytic Separator
+  <BuildingPlacementSettings>k__BackingField:
+    <CellTypeValidation>k__BackingField: []
+    <MultiplyPlacing>k__BackingField: 0
+  <Price>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 0}
+  <BuildingCost>k__BackingField: []
+  <Separations>k__BackingField:
+  - FluidType: 1
+    OutputFluidType:
+    - FluidType: 2
+      M3_Amount: 0.4
+    - FluidType: 3
+      M3_Amount: 0.5
+    KW_PowerPerM3Input: 20
+    H_SpeedPerM3Input: 60
+  <M3_InputContainerCapacity>k__BackingField: 1000
+  <M3_Output1ContainerCapacity>k__BackingField: 500
+  <M3_Output2ContainerCapacity>k__BackingField: 500

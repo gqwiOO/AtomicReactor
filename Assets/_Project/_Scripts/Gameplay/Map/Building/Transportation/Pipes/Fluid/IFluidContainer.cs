@@ -10,7 +10,7 @@ namespace Gameplay.Transportation.WaterPipeSystem
         FluidType LockedFluidType { get; } 
         void ExtractFluid(float amount);
         void AddFluid(FluidType fluidType,float amount);
-
+        bool IsEmpty();
         event Action<FluidContainer> OnAdded;
     }
 
@@ -39,7 +39,7 @@ namespace Gameplay.Transportation.WaterPipeSystem
             if (FluidType != fluidType && FluidType != FluidType.None)
                 return;
 
-            if (LockedFluidType != fluidType)
+            if (LockedFluidType != fluidType && LockedFluidType != FluidType.None)
                 return;
             
             FluidType = fluidType;
@@ -47,11 +47,19 @@ namespace Gameplay.Transportation.WaterPipeSystem
             OnAdded?.Invoke(this);
         }
 
+        public bool IsEmpty() => CurrentValue <= 0;
+
         public event Action<FluidContainer> OnAdded;
     }
 
     public interface IFluidExtractionSource
     {
         IFluidContainer ExtractionFluidContainer { get; }
+    }
+
+    public interface IFluidMultiExtractionSource
+    {
+        IFluidContainer ExtractionFluidContainer_1 { get; }
+        IFluidContainer ExtractionFluidContainer_2 { get; }
     }
 }

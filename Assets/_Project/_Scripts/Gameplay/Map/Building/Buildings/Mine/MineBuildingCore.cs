@@ -21,9 +21,6 @@ namespace Gameplay.Map.Building.Mine
         {
             _settings = settings;
             Storage = new Inventory(1, settings.StorageCellCapacity);
-            BuildingSidesData = new BuildingSidesData(
-                SideType.Electricity, SideType.Electricity,
-                SideType.Electricity, SideType.Electricity);
         }
 
         public void SetOreItemId(int itemId) => _oreItemId = itemId;

@@ -31,9 +31,7 @@ namespace Gameplay.Map.Building.CraftBuilding
         public override void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int direction)
         {
             _craftBuildingCore.OnNeighbourUpdated(neighborCell, direction);
-            SideType sideData = _craftBuildingCore.BuildingSidesData.GetSide(direction);
-
-            TrySetOutputContainer(neighborCell, sideData);
+            // TrySetOutputContainer(neighborCell, sideData);
         }
         
         private void TrySetOutputContainer(ICell neighborCell, SideType sideData)

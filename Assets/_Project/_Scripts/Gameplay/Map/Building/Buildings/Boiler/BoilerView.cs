@@ -7,8 +7,8 @@ namespace Gameplay.Map.Building.Boiler
 {
     public class BoilerView : BaseMapObjectView
     {
-        [SerializeField] private FloatContainerView waterContainerView;
-        [SerializeField] private FloatContainerView steamContainerView;
+        [SerializeField] private FluidContainerView waterContainerView;
+        [SerializeField] private FluidContainerView steamContainerView;
         [SerializeField] private FuelContainerView fuelContainerView;
         
         public override void Init(BuildingMapObject buildingMapObject)
@@ -18,8 +18,8 @@ namespace Gameplay.Map.Building.Boiler
 
         private void SpecificInit(BoilerBuilding boiler)
         {
-            steamContainerView.Init(boiler.SteamContainer.FloatContainer);
-            waterContainerView.Init(boiler.WaterContainer);
+            steamContainerView.Init(boiler.SteamContainer);
+            waterContainerView.Init(boiler.InsertionFluidContainer);
             fuelContainerView.Init(boiler.FuelContainer);
         }
     }

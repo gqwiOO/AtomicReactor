@@ -8,12 +8,15 @@ namespace Gameplay.Map.Building.CraftBuilding
 {
     public abstract class BaseElectricityRequiredBuildingCore: IBuildingCore,  IElectricBuildingCore
     {
-        public BuildingSidesData BuildingSidesData { get; protected set; }
         public IElectricityContainer ElectricityContainer { get; protected set; }
 
+        protected BaseElectricityRequiredBuildingCore(float maxElectricityCapacity)
+        {
+            ElectricityContainer = new ElectricityContainer(maxElectricityCapacity);
+        }
+        
         protected BaseElectricityRequiredBuildingCore()
         {
-            BuildingSidesData = new BuildingSidesData(SideType.Electricity, SideType.None, SideType.Output, SideType.Input);
             ElectricityContainer = new ElectricityContainer();
         }
 
@@ -28,10 +31,7 @@ namespace Gameplay.Map.Building.CraftBuilding
         {
             if (cell.CellVisitor is IElectricResourceBuilding electricityGenerator)
             {
-                if (BuildingSidesData.GetSide(direction) == SideType.Electricity)
-                    SetElectricityResourceInput(electricityGenerator.ElectricityProvider, true);
-                else
-                    SetElectricityResourceInput(electricityGenerator.ElectricityProvider, false);
+                SetElectricityResourceInput(electricityGenerator.ElectricityProvider, true);
             }
         }
         
