@@ -8,6 +8,7 @@ using Gameplay.Map.Building.Items.Data;
 using Gameplay.Map.Cell;
 using Gameplay.Map.CellsService;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using Zenject;
 
@@ -17,8 +18,6 @@ namespace Gameplay.Transportation.WaterPipeSystem
     {
         [field: SerializeField] public FluidType FluidType { get; set; }
         [field: SerializeField] public float FillValue { get; set; }
-        
-        [field: SerializeField] public ICell Cell { get; set; }
         
         [SerializeField] private PipeView pipeView;
         
@@ -34,7 +33,10 @@ namespace Gameplay.Transportation.WaterPipeSystem
         public IEnumerable<IPipe> ConnectedPipes => _connectedPipes;
         public int ConnectedPipesCount => _connectedPipes.Count;
         
+        public event Action<BasePipe> OnClicked;
+        
         public bool ConnectedTo(IPipe pipe) => _connectedPipes.Contains(pipe);
+        
 
         [Inject]
         private void Construct(IMapCellsService mapCellsService)
@@ -50,6 +52,16 @@ namespace Gameplay.Transportation.WaterPipeSystem
 
         public override void Tick()
         {
+        }
+        
+        
+        private void OnMouseUpAsButton()
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+            OnClicked?.Invoke(this);
         }
 
         private async UniTask InitPipeSystem()

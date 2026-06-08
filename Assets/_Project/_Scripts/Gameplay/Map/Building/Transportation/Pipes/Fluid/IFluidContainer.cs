@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Gameplay.Transportation.WaterPipeSystem
 {
@@ -59,7 +60,6 @@ namespace Gameplay.Transportation.WaterPipeSystem
 
     public interface IFluidMultiExtractionSource
     {
-        IFluidContainer ExtractionFluidContainer_1 { get; }
-        IFluidContainer ExtractionFluidContainer_2 { get; }
+        List<IFluidContainer> ExtractionFluidContainers { get; }
     }
 }

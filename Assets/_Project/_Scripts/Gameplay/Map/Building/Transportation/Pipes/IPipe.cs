@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Gameplay.Map.Cell;
 using UnityEngine;
 
@@ -9,10 +10,8 @@ namespace Gameplay.Transportation.WaterPipeSystem
         IPipeSystem ParentPipeSystem { get; }
         FluidType FluidType { get; }
         float FillValue { get; }
-        ICell Cell { get; }
-
         IEnumerable<IPipe> ConnectedPipes { get; }
-        
+        event Action<BasePipe> OnClicked;
         bool ConnectedTo(IPipe pipe);
         int ConnectedPipesCount { get;}
         void AddFluid(float amount);

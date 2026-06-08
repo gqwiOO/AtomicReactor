@@ -8933,7 +8933,7 @@ MonoBehaviour:
   cellsCollection: {fileID: 11400000, guid: d3d9fad8a65398f49b984f7599c34a03, type: 2}
   _biomesCollection: {fileID: 11400000, guid: a8da2a5fa6168d84cb7d5442e9ea201c, type: 2}
   _cellsParent: {fileID: 679878520}
-  _mapSize: {x: 250, y: 250}
+  _mapSize: {x: 150, y: 150}
   waterFrequency: 0.05
   waterMaxValue: 0.2
 --- !u!4 &679878520

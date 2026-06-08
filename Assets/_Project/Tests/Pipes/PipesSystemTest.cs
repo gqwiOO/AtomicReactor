@@ -36,7 +36,7 @@ namespace Horror.Tests.Pipes
         [UnityTest]
         public IEnumerator PipesDividingtest()
         {
-            PipeSystem PipeSystem = new FluidPipeSystem();
+            FluidPipeSystem PipeSystem = new FluidPipeSystem();
             IFluidContainer fluidProvider = new FluidContainer();
             var fakeCell = new FakeCell();
             fakeCell.SetVisitor(new FakeFluidSource(fluidProvider));
@@ -44,7 +44,7 @@ namespace Horror.Tests.Pipes
             
             for (int x = 0; x < 5; x++)
             {
-                IPipe pipe = Object.Instantiate(Resources.Load<GameObject>("Pipe")).GetComponent<FluidPipe>();
+                BasePipe pipe = Object.Instantiate(Resources.Load<GameObject>("Pipe")).GetComponent<FluidPipe>();
                 PipeSystem.AddPipe(pipe);
             }
             
