@@ -61,7 +61,7 @@ namespace Gameplay.Map.Control
         {
             if (!_isDragging || cell == null) return;
 
-            _draggedBuilding.transform.position = cell.WorldPosition;
+            _draggedBuilding.transform.position = cell.WorldPosition + 1f * Vector3.up;
             _canBePlaced = _buildingCellPlacementValidator.CanBePlaced(
                 _buildingsSettingsProvider.GetBuildingSettings(_draggedBuilding.Key), cell.Position);
             _draggedBuilding.SetMaterialColor(_canBePlaced ? Color.green : Color.red);
@@ -83,7 +83,8 @@ namespace Gameplay.Map.Control
 
         private void Place(ICell targetCell)
         {
-            _draggedBuilding.transform.position = targetCell.WorldPosition;
+            //todo: 1f
+            _draggedBuilding.transform.position = targetCell.WorldPosition+ 1f * Vector3.up;
             targetCell.SetVisitor(_draggedBuilding);
             // NOTE: Init re-registers with UpdateService — deduplicate there if needed
             _draggedBuilding.Init(targetCell.Position).Forget();
@@ -99,7 +100,7 @@ namespace Gameplay.Map.Control
             if (!_isDragging) return;
 
             _sourceCell.SetVisitor(_draggedBuilding);
-            _draggedBuilding.transform.position = _sourceCell.WorldPosition;
+            _draggedBuilding.transform.position = _sourceCell.WorldPosition + 1f * Vector3.up;
             _draggedBuilding.Init(_sourceCell.Position).Forget();
             _draggedBuilding.SetMaterialColor(Color.white);
             _isDragging = false;

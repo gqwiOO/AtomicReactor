@@ -17,6 +17,7 @@ namespace Gameplay
             Container.BindInterfacesAndSelfTo<MapBuildingControlTypeHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<MapDestroyingControlTypeHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<MapDefaultControlTypeHandler>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MapMovingControlTypeHandler>().AsSingle();
         }
     }
 }
