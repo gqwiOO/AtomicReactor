@@ -1,4 +1,5 @@
-﻿using Gameplay.Map.Control;
+﻿using Gameplay.Control;
+using Gameplay.Map.Control;
 using Zenject;
 
 namespace Gameplay
@@ -13,6 +14,9 @@ namespace Gameplay
         private void MapControl()
         {
             Container.BindInterfacesAndSelfTo<MapControlService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MapBuildingControlTypeHandler>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MapDestroyingControlTypeHandler>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MapDefaultControlTypeHandler>().AsSingle();
         }
     }
 }

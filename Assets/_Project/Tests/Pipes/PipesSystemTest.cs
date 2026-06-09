@@ -23,6 +23,9 @@ namespace Horror.Tests.Pipes
             public event Action<ICell> OnUpdated;
             public void NotifyAboutNeighbourUpdated(ICell cell) { }
             public void SetVisitor(ICellVisitor visitor) => CellVisitor = visitor;
+            public void DestroyVisitor()
+            {
+            }
         }
 
         private class FakeFluidSource : ICellVisitor, IFluidExtractionSource
@@ -31,6 +34,10 @@ namespace Horror.Tests.Pipes
             public FakeFluidSource(IFluidContainer provider) => ExtractionFluidContainer = provider;
             public void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int side) { }
             public event Action OnUpdated;
+            public void Destroy()
+            {
+                
+            }
         }
 
         [UnityTest]

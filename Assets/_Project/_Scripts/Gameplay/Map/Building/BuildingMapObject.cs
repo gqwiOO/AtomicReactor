@@ -102,5 +102,10 @@ namespace Gameplay.Map.Building
         {
             _updateService?.Remove(this);
         }
+
+        public void Destroy()
+        {
+            Destroy(gameObject);
+        }
     }
 }

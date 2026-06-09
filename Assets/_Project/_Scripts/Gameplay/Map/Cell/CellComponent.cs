@@ -55,6 +55,16 @@ namespace Gameplay.Map.Cell
                 cellVisitor.OnUpdated += CellVisitor_OnUpdated;
         }
 
+        public void DestroyVisitor()
+        {
+            if (CellVisitor == null)
+                return;
+            
+            CellVisitor.OnUpdated -= CellVisitor_OnUpdated;
+            CellVisitor.Destroy();
+            CellVisitor = null;
+        }
+
         private void CellVisitor_OnUpdated()
         {
             foreach (ICell cellNeighbour in _mapCellsService.GetCellNeighbours(this))
