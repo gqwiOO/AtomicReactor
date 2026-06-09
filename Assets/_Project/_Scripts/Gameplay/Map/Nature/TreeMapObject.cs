@@ -12,5 +12,9 @@ namespace Gameplay.Map.Nature
         }
 
         public event Action OnUpdated;
+        public void Destroy()
+        {
+            Destroy(gameObject);
+        }
     }
 }

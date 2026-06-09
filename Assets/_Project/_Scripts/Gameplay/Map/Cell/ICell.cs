@@ -14,11 +14,14 @@ namespace Gameplay.Map.Cell
 
         void NotifyAboutNeighbourUpdated(ICell cell);
         void SetVisitor(ICellVisitor cellVisitor);
+        void DestroyVisitor();
     }
 
     public interface ICellVisitor
     {
         void NotifyAboutNeighborUpdated(ICell neighborCell, Vector2Int side);
         event Action OnUpdated;
+
+        void Destroy();
     }
 }

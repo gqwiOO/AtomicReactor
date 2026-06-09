@@ -17,7 +17,6 @@ namespace Gameplay.Map.Installer
     public class MapInstaller: MonoInstaller
     {
         [SerializeField] private BuildingMapSpawnSelector buildingMapSpawnSelector;
-        [SerializeField] private BuildingMapCellSelectorHandler buildingMapCellSelectorHandler;
         [SerializeField] private BuildingMapFactory buildingMapFactory;
         [SerializeField] private BuildingSelector buildingSelector;
         [SerializeField] private BuildingDestroyHandler buildingDestroyHandler;
@@ -25,7 +24,6 @@ namespace Gameplay.Map.Installer
         public override void InstallBindings()
         {
             Container.Bind<IBuildingMapSpawnSelector>().FromInstance(buildingMapSpawnSelector).AsSingle();
-            Container.Bind<IBuildingMapCellSelectorHandler>().FromInstance(buildingMapCellSelectorHandler).AsSingle();
             Container.Bind<IBuildingMapFactory>().FromInstance(buildingMapFactory).AsSingle();
             Container.BindInterfacesAndSelfTo<MapCellsService>().AsSingle();
             Container.BindInterfacesAndSelfTo<MapChunkService>().AsSingle();

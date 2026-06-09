@@ -18,8 +18,6 @@ namespace Gameplay.Map.Building
         [field: SerializeField] public float Price { get; private set; }
         [field: SerializeField] public Sprite Icon { get; private set; }
         [field: SerializeField] public List<BuildingResourceCost> BuildingCost { get; private set; } = new();
-
-        public bool MultiplyPlacing => BuildingPlacementSettings.MultiplyPlacing;
     }
 
     public interface IBuildingSettingsData
