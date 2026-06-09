@@ -64,6 +64,7 @@ namespace Gameplay.Map.Cell
             CellVisitor.Destroy();
             CellVisitor = null;
             OnUpdated?.Invoke(this);
+
         }
 
         private void CellVisitor_OnUpdated()

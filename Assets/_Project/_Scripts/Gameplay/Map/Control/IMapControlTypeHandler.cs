@@ -12,6 +12,6 @@ namespace Gameplay.Map.Control
         void SetState(bool state) => State = state;
         void HandleCellClick(ICell cell);
         void HandleCellChanged(ICell cell);
-
+        void HandleCellRelease(ICell cell) { }
     }
 }

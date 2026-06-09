@@ -5,5 +5,6 @@
         Default = 0,
         Building = 1,
         Destroying = 2,
+        Moving = 3,
     }
 }

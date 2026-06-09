@@ -65,20 +65,25 @@ namespace Gameplay.Map.Control
             State = state;
             if (state)
             {
-                _cellMapListener.OnCellPointed += OnCellPointed;
+                CreateNewBuilding();
+            }
+        }
 
-                _instance = _buildingMapFactory.CreateBuilding<BuildingMapObject>(_controlArgs.BuildingKey);
-                _instance.DisableAllColliders();
-            }
-            else
-            {
-                _cellMapListener.OnCellPointed -= OnCellPointed;
-            }
+        private void CreateNewBuilding()
+        {
+            _instance = _buildingMapFactory.CreateBuilding<BuildingMapObject>(_controlArgs.BuildingKey);
+            _instance.DisableAllColliders();
         }
 
         public void HandleCellChanged(ICell cell)
         {
-            _instance.transform.position = _cellMapListener.CurrentCell.transform.position + new Vector3(0, 1, 0)/*+ cellDiffVisitorPosition*/;
+            _canBePlaced = _buildingCellPlacementValidator.CanBePlaced(
+                _buildingsSettingsProvider.GetBuildingSettings(_instance.Key), cell.Position);
+            UpdateBuildingPosition();
+
+            Debugging.Log(this, "Can be placed: " + _canBePlaced);
+
+            _instance.SetMaterialColor(_canBePlaced ? Color.green : Color.red);
         }
 
         public void HandleCellClick(ICell cell)
@@ -101,14 +106,12 @@ namespace Gameplay.Map.Control
         public void TurnOff()
         {
             State = false;
-            _cellMapListener.OnCellPointed -= OnCellPointed;
         }
 
         private void ClearPreviousState()
         {
             if (State)
             {
-                _cellMapListener.OnCellPointed -= OnCellPointed;
                 Object.Destroy(_instance?.gameObject);
             }
         }
@@ -120,34 +123,31 @@ namespace Gameplay.Map.Control
             _buildingMapSpawnSelector.Unselect();
         }
 
-        private void OnCellPointed(CellComponent cell)
+        private void UpdateBuildingPosition()
         {
-            _canBePlaced = _buildingCellPlacementValidator.CanBePlaced(
-                _buildingsSettingsProvider.GetBuildingSettings(_instance.Key), cell.Position);
-
-            Debugging.Log(this, "Can be placed: " + _canBePlaced);
-
-            _instance.SetMaterialColor(_canBePlaced ? Color.green : Color.red);
+            _instance.transform.position = _cellMapListener.CurrentCell.transform.position + new Vector3(0, 1, 0)/*+ cellDiffVisitorPosition*/;
         }
 
         private async UniTask PlaceBuilding()
         {
             _cellMapListener.CurrentCell.SetVisitor(_instance);
-            TurnOff();
             _instance.SetMaterialColor(Color.white);
             var placedCell = _cellMapListener.CurrentCell;
             _instance.StartBuilding(placedCell.Position);
             _instance = null;
-            OnSelfChangeModeToDefault?.Invoke();
-            return;
-            if (_currentBuildingSettingsData.MultiplyPlacing)
+            
+            if (Input.GetKey(KeyCode.LeftControl))
             {
+                CreateNewBuilding();
+                UpdateBuildingPosition();
                 _canBePlaced = _buildingCellPlacementValidator.CanBePlaced(
                     _buildingsSettingsProvider.GetBuildingSettings(_currentBuildingSettingsData.Key),
                     placedCell.Position);
             }
             else
             {
+                TurnOff();
+                OnSelfChangeModeToDefault?.Invoke();
             }
         }
     }

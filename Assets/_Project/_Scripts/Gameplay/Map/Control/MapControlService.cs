@@ -78,9 +78,10 @@ namespace Gameplay.Map.Control
         public void Tick()
         {
             if (Input.GetMouseButtonDown(0))
-            {
                 _activeControlHandler?.HandleCellClick(_cellMapListener.CurrentCell);
-            }
+
+            if (Input.GetMouseButtonUp(0))
+                _activeControlHandler?.HandleCellRelease(_cellMapListener.CurrentCell);
         }
     }
 }
